@@ -1,25 +1,18 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+
 import logo from './logo.svg';
 import classes from './App.css';
+import Header from './components/Header/Header';
 
-function App() {
+const App = props => {
   return (
-    <div className={classes.App}>
-      <header className={classes.App_header}>
-        <img src={logo} className={classes.App_logo} alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className={classes.App_link}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Header />
+      <main>
+        <Route path="/" component={} exact />
+      </main>
+    </React.Fragment>
   );
 }
 
