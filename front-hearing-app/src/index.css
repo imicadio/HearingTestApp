@@ -5,12 +5,14 @@
 html,
 body {
   margin: 0;
+  font-size: 16px;
+  color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;  
+  
 }
 
 code {
@@ -24,3 +26,10 @@ h3 { font-size: 1.17rem; margin: .83rem }
 h4 { margin: 1.12rem }
 h5 { font-size: .83rem; margin: 1.5rem }
 h6 { font-size: .75rem; margin: 1.67rem }
+
+@media all and (max-width: 768px) { 
+  html,
+  body {
+  font-size: 14px;    
+  }
+}

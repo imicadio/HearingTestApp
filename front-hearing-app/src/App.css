@@ -1,27 +1,5 @@
 .Container{
-  display: flex;
-  justify-content: center;
-}
-
-.App {
-  text-align: center;
-}
-
-.App_logo {
-  height: 40vmin;
-}
-
-.App_header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App_link {
-  color: #09d3ac;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

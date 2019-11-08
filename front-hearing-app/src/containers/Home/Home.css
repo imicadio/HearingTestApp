@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .top_belt:after {
@@ -23,8 +24,97 @@
 	margin-left: -25px;
 }
 
-.top_belt h2 {
+h2 {
     font-size: 2rem;
     font-weight: 500;
-    margin: 1.2em 0;
+    margin: 1.2em 5%;
+    text-align: center;
 }
+
+.Container {    
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    max-width: 20%;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    width: 60%;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+li {
+    display: inline-block;    
+    text-align: center;
+    margin: 0 -1px;
+    width: 30%;
+    padding: 20px 0;    
+}
+
+input {
+    /* display: none; */
+    visibility: hidden;
+}
+
+label {
+    width: 100%;
+    display: block;
+    padding: 15px;
+    cursor: pointer;
+    border: 2px solid #ff2058;
+}
+
+li:first-child label {
+    border-radius: 100px 0 0 100px;
+}
+
+li:last-child label {
+    border-radius: 0 100px 100px 0;
+}
+
+label:hover {
+    background: #ff2058;
+    color: #fff;    
+}
+
+.active {
+    background: #ff2058;
+    color: #fff;
+}
+
+input:checked + label {
+    background: #ff2058;
+    color: #fff;
+}
+
+@media all and (max-width: 960px) { 
+    ul{
+        width: 95%;
+        font-size: 1.2rem;
+    }
+  }
+
+@media all and (max-width: 540px) { 
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    ul{
+        width: 95%;
+        font-size: 1rem;
+    }
+  }
