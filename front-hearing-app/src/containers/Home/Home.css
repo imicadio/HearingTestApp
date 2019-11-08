@@ -2,22 +2,6 @@ img {
     max-width: 10%;
 }
 
-.max_width {
-    max-width: 960px;
-    padding: 0 1rem;
-    margin: 0 auto;
-}
-
-.answers {
-    border-radius: 5rem;
-    box-shadow: none;
-    user-select: none;
-    width: 95%;
-    padding: 0;
-    display: table;
-    margin: 0 auto;
-}
-
 li {
     display: inline-block;    
     text-align: center;
