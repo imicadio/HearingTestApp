@@ -34,6 +34,10 @@ h2 {
     text-align: center;
 }
 
+img {
+    max-width: 10%;
+}
+
 .content {
     padding: 10rem 0 5rem;
     text-align: center;
@@ -129,29 +133,6 @@ input:checked + label {
     vertical-align: center;
 }
 
-/* .button {
-    position: relative;
-    border-radius: 5rem;
-    -webkit-user-select: none;
-    color: #fff;
-    font-size: 1.6rem;
-    line-height: 3.5rem;
-    text-align: center;
-    display: block;
-    border: none;
-    height: 3.5rem;
-    position: relative;
-    perspective-origin: 50% 50%;
-}
-
-button {
-    font-size: 1.3rem;
-    background-color: #8bbc07;
-    color: #fff;
-    padding: 8px 20%;
-    border-radius: 5rem;
-    white-space: nowrap;
-} */
 
 button {
     outline: none;
@@ -161,7 +142,6 @@ button {
     padding: .75rem 1.25rem;
     border-radius: 10rem;
     color: #fff;
-    text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: .15rem;
     transition: all .3s;
@@ -199,4 +179,10 @@ button {
   }
   button:hover:before {
     width: 100%;
+  }
+
+  @media all and (max-width: 540px){
+    img {
+        max-width: 18%;
+    }
   }

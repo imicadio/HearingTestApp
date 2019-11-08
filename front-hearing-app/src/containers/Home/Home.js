@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Home.css'
-// import img from "./../../assets/images/hearing_loss.png";
+import img from "./../../assets/images/hearing-01.svg";
 
 const Home = () => {
     return(
@@ -11,7 +11,8 @@ const Home = () => {
                 </div>   
                 <div className={classes.content}>
                     <div className={classes.content_inner}>
-                            <h2>Czy uważasz, że masz problem ze słuchem?</h2>
+                        <img src={img} alt="Ubytek słuchu" />
+                        <h2>Czy uważasz, że masz problem ze słuchem?</h2>
                         <div className={classes.max_width}>
                             <ul className={classes.answers}>
                                 <li>
@@ -33,7 +34,7 @@ const Home = () => {
                 <div className={classes.footer}>
                     <div className={classes.footer_inner}>
                         <span className={classes.button}>
-                            <button>Sprawdźmy</button>
+                            <button>Sprawdźmy!</button>
                         </span>
                     </div>
                 </div>
