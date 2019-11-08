@@ -1,0 +1,30 @@
+.top_belt {
+    width: 100%;
+    background-color: #ff2058;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.top_belt:after {
+    top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(255, 32, 88, 0);
+	border-top-color: #ff2058;
+	border-width: 25px;
+	margin-left: -25px;
+}
+
+.top_belt h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 1.2em 0;
+}

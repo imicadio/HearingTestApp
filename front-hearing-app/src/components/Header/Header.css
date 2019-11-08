@@ -1,5 +1,16 @@
 .header {
     height: 100px;
     width: 100%;
-    background-color: #ff2058;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-weight: 600;
+    background-color: #FFF;
+}
+
+.menu {
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
 }

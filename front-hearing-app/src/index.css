@@ -10,9 +10,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+h1 { font-size: 2rem; margin: .67rem }
+h2 { font-size: 1.5rem; margin: .75rem }
+h3 { font-size: 1.17rem; margin: .83rem }
+h4 { margin: 1.12rem }
+h5 { font-size: .83rem; margin: 1.5rem }
+h6 { font-size: .75rem; margin: 1.67rem }
