@@ -1,0 +1,16 @@
+.header {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-weight: 600;
+    background-color: #ffffff;
+}
+
+.menu {
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+}

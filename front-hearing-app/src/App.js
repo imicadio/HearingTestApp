@@ -1,12 +1,14 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import classes from './App.css';
-import Header from './components/Header/Header';
+import Navigation from './components/Navigation/Navigation';
 import Home from './containers/Home/Home';
 import Contact from './containers/Contact/Contact';
+import SetupInstruction from './containers/Setup-Instruction/Setup-Instruction';
 
 const routes = (
   <Switch>
+    <Route path="/setupInstructions" component={SetupInstruction} />
     <Route path="/contact" component={Contact} />
     <Route path="/" exact component={Home} />
     <Redirect to="/" />
@@ -16,7 +18,7 @@ const routes = (
 const App = props => {
   return (
     <React.Fragment>
-      <Header />
+      <Navigation />
       <main className={classes.Container}>
         {routes}
       </main>

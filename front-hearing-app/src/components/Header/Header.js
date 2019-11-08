@@ -1,15 +1,13 @@
 import React from 'react';
+
 import classes from './Header.css';
 
-const Header = () => {
+const Header = props => {
     return(
         <div className={classes.header}>
-            <div className={classes.menu}>                
-                <div>Michał Jeszko</div>      
-                <div>Login</div>         
-            </div>
-        </div>
+            <h2>{props.text}</h2>
+        </div> 
     );
 }
 
-export default Header; 
+export default Header;

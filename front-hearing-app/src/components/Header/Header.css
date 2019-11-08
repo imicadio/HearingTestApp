@@ -1,16 +1,35 @@
 .header {
-    height: 5rem;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-    font-weight: 600;
-    background-color: #ffffff;
+    background-color: #ff2058;
+    color: white;
+    position: absolute;
+    /* display: flex; */
+    /* justify-content: center; */
+    text-align: center;
+    /* margin-bottom: 50px; */
+    height: 8rem;
+    z-index: 3;
 }
 
-.menu {
-    width: 900px;
-    display: flex;
-    justify-content: space-between;
+.header:after {
+    top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(255, 32, 88, 0);
+	border-top-color: #ff2058;
+	border-width: 25px;
+	margin-left: -25px;
+}
+
+h2 {
+    vertical-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 1.2em 5%;
+    text-align: center;
 }
