@@ -24,11 +24,9 @@ const Footer = props => {
         navigation = (
             <div className={classes.footer}>
                 <div className={classes.footer_inner}>
-                    <NavLink to="/">
-                        <span className={classes.button_back}>
-                            <i className={classes.left}></i>                            
-                        </span>
-                    </NavLink>
+                    <span className={classes.button_back} onClick={() => props.history.goBack()}>
+                        <i className={classes.left}></i>                            
+                    </span>
                     <span className={classes.button}>
                         <NavLink to={props.link}>
                             <button>Dalej</button>
