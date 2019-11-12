@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import store, { useStore } from '../../hooks-store/store';
+import { useStore } from '../../hooks-store/store';
 
 import Footer from './../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
@@ -11,10 +11,12 @@ import img from "./../../assets/images/hearing-01.svg";
 
 const Home = () => {
     const state = useStore()[0];
-    const dispatch = useStore()[1];
+    const dispatch = useStore()[1];    
     
     const headerText = "5 minutowy test słuchu";
     const link = "/setupInstructions";
+
+    const [ disabledInfo, setDisabledInfo ] = useState(false);
 
     const [ form, setForm ] = useState({
         id: "home",
@@ -27,22 +29,24 @@ const Home = () => {
         setForm({
             ...form,
             [name]: value
-        });       
+        });           
+        setDisabledInfo(true);
     }     
     
     const handleSubmit = event => {
-        console.log("Submitted succesfully");
+        console.log("Submitted succesfully");               
         submit();
     }  
 
     const submit = () => {
-        console.log(form);
         dispatch('ADD_FORM', form);              
     }
 
     // useEffect(() => {
-    //     console.log(state);
-    // }, []);  
+    //     const _index = state.dataForms.findIndex(a => a.id == "home");
+    //     console.log(_index);
+    //     // console.log(form);
+    // });  
 
     return(
         <React.Fragment>
@@ -85,7 +89,8 @@ const Home = () => {
                     </Answers>
                 </Content>
                 <Footer  
-                    ordered={submit}                
+                    disabled={disabledInfo}
+                    ordered={handleSubmit}                
                     link={link}
                 />
             </form>

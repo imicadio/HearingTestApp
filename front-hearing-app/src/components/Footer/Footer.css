@@ -35,6 +35,10 @@ button {
   width: 66%;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 button:after {
   content: '';
   position: absolute;

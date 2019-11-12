@@ -9,7 +9,11 @@ const Footer = props => {
             <div className={classes.footer_inner}>
                 <span className={classes.button}>
                     <NavLink to={props.link}>
-                        <button onClick={props.ordered} type="submit">Sprawdźmy!</button>
+                        <button 
+                            onClick={props.ordered} 
+                            type="submit"
+                            disabled={!props.disabled}
+                        >Sprawdźmy!</button>
                     </NavLink>                            
                 </span>
             </div>

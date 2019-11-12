@@ -4,16 +4,16 @@ import Footer from './../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Content from '../../components/Content/Content';
 
-const SetupInstruction = () => {
-    const headerText = "Przed rozpoczęciem";
-    const link = "/test";
+const Test = () => {
+    const headerText = "Czy słyszysz dźwięk?";
+    const link = "";
 
     return(
         <React.Fragment>
             <div>
                 <Header text={headerText} />  
                 <Content>
-                    <h2>Upewnij się, że przebywasz w cichym pomieszczeniu.</h2>
+                    <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
                 <Footer link={link}/>
             </div>
@@ -21,4 +21,4 @@ const SetupInstruction = () => {
     );
 }
 
-export default SetupInstruction;
+export default Test;
