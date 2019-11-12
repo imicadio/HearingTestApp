@@ -4,6 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import configureFormsStore from './hooks-store/forms-store';
+
+configureFormsStore();
 
 const app = (
     <BrowserRouter>

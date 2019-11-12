@@ -2,14 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Footer.css';
 
-const Footer = props => {
+const Footer = props => {       
 
     let navigation = (
         <div className={classes.footer}>
             <div className={classes.footer_inner}>
                 <span className={classes.button}>
                     <NavLink to={props.link}>
-                        <button>Sprawdźmy!</button>
+                        <button onClick={props.ordered} type="submit">Sprawdźmy!</button>
                     </NavLink>                            
                 </span>
             </div>
