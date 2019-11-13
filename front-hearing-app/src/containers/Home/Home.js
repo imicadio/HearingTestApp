@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useStore } from '../../hooks-store/store';
 
 import Footer from './../../components/Footer/Footer';
@@ -11,7 +11,7 @@ import './Home.css'
 const img = "http://imicadio.com/HearingTestApp/assets/images/hearing-01.svg";
 
 const Home = () => {
-    const state = useStore()[0];
+    // const state = useStore()[0];
     const dispatch = useStore()[1];    
     
     const headerText = "5 minutowy test słuchu";
@@ -42,13 +42,6 @@ const Home = () => {
     const submit = () => {
         dispatch('ADD_FORM', form);              
     }
-
-    // useEffect(() => {
-    //     const _index = state.dataForms.findIndex(a => a.id == "home");
-    //     console.log(_index);
-    //     // console.log(form);
-    // });  
-
     return(
         <React.Fragment>
             <form onSubmit={handleSubmit}>

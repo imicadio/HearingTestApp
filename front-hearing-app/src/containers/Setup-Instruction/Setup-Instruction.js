@@ -1,5 +1,5 @@
 import React from 'react';
-import {useLocation, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 import Footer from './../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
@@ -9,8 +9,6 @@ const SetupInstruction = () => {
     const history = useHistory();
     const headerText = "Przed rozpoczęciem";
     const link = "/test";
-    // const location = useLocation();    
-    // console.log(history);
     
     return(
         <React.Fragment>

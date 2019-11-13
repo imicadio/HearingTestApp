@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import classes from './Sound.css';
+import VolumeButton from '../VolumeButton/VolumeButton';
 
 const Sound = props => {
+    console.log(props.aud);
     const [ _play, setPlay ] = useState(true);    
 
     let classesButton=[classes.play];     
@@ -10,30 +12,26 @@ const Sound = props => {
     } 
 
     const btnClick = () => {        
-        // sound end
-        if(!_play) {     
-            setPlay(true);   
-            props.aud.loop = false;
-            props.aud.pause();
-            console.log("1 " + _play);                  
-        }
-
-        // sound start
-        if(_play){
-            setPlay(false); 
-            props.aud.loop = true;
-            props.aud.play();
-            console.log("2 " + _play);
-        }                            
+        setPlay(!_play);
+        props.aud.loop = _play;
+        if(_play) props.aud.play();
+        if(!_play) props.aud.pause();                         
     };    
+
+    let button = (
+        <button 
+            onClick={btnClick} 
+            className={classesButton.join(' ')}
+        ></button> 
+    );
 
     return(
         <React.Fragment>
-            <button 
-                onClick={btnClick} 
-                className={classesButton.join(' ')}
-            ></button>
-            <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
+            {button}
+            <VolumeButton
+                volumeAdd={props.volumeAdd}
+                volumeRemove={props.volumeRemove}
+            />
         </React.Fragment>
     );
 }

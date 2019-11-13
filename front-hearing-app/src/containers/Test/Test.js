@@ -10,15 +10,31 @@ const Test = () => {
     const history = useHistory();
     const headerText = "Czy słyszysz dźwięk?";
     const link = "";
-    var aud = new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_80.ogg"); 
-    
+    const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];
+    let count = 11;
+    var aud = new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg");     
+
+    const volumeAdd = () => {
+        if(count < 12) count += 1;                
+        console.log("Wartość count: " + dB[count]);        
+    }
+
+    const volumeRemove = () => {
+        if(count > 0) count -= 1;        
+        console.log("Wartość count: " + dB[count]);          
+    }
 
     return(
         <React.Fragment>
             <div>
                 <Header text={headerText} />  
                 <Content>                     
-                    <Sound aud={aud} />
+                    <Sound 
+                        volumeAdd={volumeAdd}
+                        volumeRemove={volumeRemove}
+                        aud={aud} 
+                    />
+                    <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
                 <Footer 
                     history={history}
