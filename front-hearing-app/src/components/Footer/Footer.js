@@ -10,6 +10,7 @@ const Footer = props => {
                 <span className={classes.button}>
                     <NavLink to={props.link}>
                         <button 
+                            className={classes.button_1}
                             onClick={props.ordered} 
                             type="submit"
                             disabled={!props.disabled}
@@ -29,7 +30,7 @@ const Footer = props => {
                     </span>
                     <span className={classes.button}>
                         <NavLink to={props.link}>
-                            <button>Dalej</button>
+                            <button className={classes.button_1}>Dalej</button>
                         </NavLink>                            
                     </span>
                 </div>

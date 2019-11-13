@@ -6,11 +6,11 @@ import Header from '../../components/Header/Header';
 import Content from '../../components/Content/Content';
 
 const SetupInstruction = () => {
+    const history = useHistory();
     const headerText = "Przed rozpoczęciem";
     const link = "/test";
-    const location = useLocation();
-    const history = useHistory();
-    console.log(history);
+    // const location = useLocation();    
+    // console.log(history);
     
     return(
         <React.Fragment>
