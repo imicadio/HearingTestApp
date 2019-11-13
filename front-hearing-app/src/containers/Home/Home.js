@@ -7,7 +7,8 @@ import Content from '../../components/Content/Content';
 import Answers from '../../components/Answers/Answers';
 
 import './Home.css'
-import img from "./../../assets/images/hearing-01.svg";
+
+const img = "http://imicadio.com/HearingTestApp/assets/images/hearing-01.svg";
 
 const Home = () => {
     const state = useStore()[0];

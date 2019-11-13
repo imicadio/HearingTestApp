@@ -7,22 +7,28 @@ import Header from '../../components/Header/Header';
 import Content from '../../components/Content/Content';
 
 const Test = () => {
-    const [ play, setPlay ] = useState(true);
+    const [ _play, setPlay ] = useState(true);
     const history = useHistory();
     const headerText = "Czy słyszysz dźwięk?";
     const link = "";
 
     let classesButton=[classes.play];     
-    if(!play) {
+    if(!_play) {
         classesButton.push(classes.paused);
-    }
+    } 
 
-    const btnClick = () => {
-        if(!play) {            
-            setPlay(true);                  
+    const btnClick = () => {        
+
+        // sound end
+        if(!_play) {     
+            setPlay(true);       
+            console.log("1 " + _play);                  
         }
-        if(play){
-            setPlay(false);            
+
+        // sound start
+        if(_play){
+            setPlay(false); 
+            console.log("2 " + _play);
         }                       
     }
 
@@ -31,17 +37,20 @@ const Test = () => {
             onClick={btnClick} 
             className={classesButton.join(' ')}
         ></button>
-    );
-    
-    // useEffect(() => {        
-    //     console.log(play);
-    // }, [play]);
+    );    
+
+    useEffect(() => {    
+        console.log("Przed aktualizacją " + _play);          
+    }, [_play]);
 
     return(
         <React.Fragment>
             <div>
                 <Header text={headerText} />  
                 <Content>
+                    <audio id="audio" loop>
+                        <source src="http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_80.ogg" type="audio/ogg" />  
+                    </audio>
                     {button}
                     <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
