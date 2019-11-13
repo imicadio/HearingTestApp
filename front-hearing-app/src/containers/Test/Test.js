@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import {useHistory} from 'react-router-dom';
 
 import Footer from './../../components/Footer/Footer';
@@ -11,18 +11,21 @@ const Test = () => {
     const headerText = "Czy słyszysz dźwięk?";
     const link = "";
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];
-    let count = 11;
-    var aud = new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg");     
+    let count = 11; 
 
-    const volumeAdd = () => {
-        if(count < 12) count += 1;                
-        console.log("Wartość count: " + dB[count]);        
-    }
+    const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
 
-    const volumeRemove = () => {
+    const volumeAdd = useCallback(() => {
+        if(count < 11) count += 1;                
+        console.log("Wartość count: " + dB[count]);     
+        setAudio(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
+    }, [setAudio])
+
+    const volumeRemove = useCallback(() => {
         if(count > 0) count -= 1;        
-        console.log("Wartość count: " + dB[count]);          
-    }
+        console.log("Wartość count: " + dB[count]);     
+        setAudio(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));     
+    }, [setAudio]);
 
     return(
         <React.Fragment>
@@ -32,7 +35,7 @@ const Test = () => {
                     <Sound 
                         volumeAdd={volumeAdd}
                         volumeRemove={volumeRemove}
-                        aud={aud} 
+                        aud={audio} 
                     />
                     <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
