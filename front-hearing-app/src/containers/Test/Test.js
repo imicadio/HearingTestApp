@@ -11,35 +11,49 @@ const Test = () => {
     const headerText = "Czy słyszysz dźwięk?";
     const link = "";
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];
-    let count = 11; 
+    const [ count, setCount ] = useState(11);
 
     const [ _play, setPlay ] = useState(true);  
     const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
 
     const volumeAdd = useCallback(() => {
-        if(count < 11) count += 1;                
-        console.log("Wartość count: " + dB[count]);     
-        setAudio(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
-    }, [setAudio]);
+        let _count = count;
+        if(count < 11) { 
+            setCount(count => count += 1);
+            _count += 1;
+        }
+        console.log("Wartość count: " + dB[count] + ", wartość _count (aktualny dźwięk): " + dB[_count]);  
+        audio.pause();   
+        setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[_count] +".ogg"));
+    }, [audio]);
 
-    const volumeRemove = useCallback(() => {
-        if(count > 0) count -= 1;
-        console.log("Wartość count: " + dB[count]);  
+    const volumeRemove = useCallback(() => {   
+        let _count = count;     
+        if(count > 0) {
+            setCount(count => count -= 1);
+            _count -= 1;
+        }
+        console.log("Wartość count: " + dB[count] + ", wartość _count (aktualny dźwięk): " + dB[_count]);  
         audio.pause(); 
-        setAudio(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
-    }, [setAudio]);
+        setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[_count] +".ogg"));
+        console.log(setAudio);
+    }, [audio]);
 
     const btnClick = () => {        
         setPlay(!_play);
         audio.loop = _play;
         if(_play) audio.play();
         if(!_play) audio.pause();                         
-    };   
+    };  
 
     useEffect(() => {
-        audio.play();
-        audio.loop = true;
-    }, [count]);
+        if(!_play){
+            audio.play();  
+            audio.loop = true;
+        } 
+    }, [audio]);
+
+    console.log(audio);
 
     return(
         <React.Fragment>
