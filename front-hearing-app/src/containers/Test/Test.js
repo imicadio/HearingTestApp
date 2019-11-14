@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 
 import Footer from './../../components/Footer/Footer';
@@ -13,19 +13,33 @@ const Test = () => {
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];
     let count = 11; 
 
+    const [ _play, setPlay ] = useState(true);  
     const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
 
     const volumeAdd = useCallback(() => {
         if(count < 11) count += 1;                
         console.log("Wartość count: " + dB[count]);     
         setAudio(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
-    }, [setAudio])
+    }, [setAudio]);
 
     const volumeRemove = useCallback(() => {
-        if(count > 0) count -= 1;        
-        console.log("Wartość count: " + dB[count]);     
-        setAudio(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));     
+        if(count > 0) count -= 1;
+        console.log("Wartość count: " + dB[count]);  
+        audio.pause(); 
+        setAudio(new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[count] +".ogg"));
     }, [setAudio]);
+
+    const btnClick = () => {        
+        setPlay(!_play);
+        audio.loop = _play;
+        if(_play) audio.play();
+        if(!_play) audio.pause();                         
+    };   
+
+    useEffect(() => {
+        audio.play();
+        audio.loop = true;
+    }, [count]);
 
     return(
         <React.Fragment>
@@ -33,6 +47,8 @@ const Test = () => {
                 <Header text={headerText} />  
                 <Content>                     
                     <Sound 
+                        _play={_play}
+                        btnClick={btnClick}
                         volumeAdd={volumeAdd}
                         volumeRemove={volumeRemove}
                         aud={audio} 
