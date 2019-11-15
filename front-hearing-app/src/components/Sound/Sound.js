@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import classes from './Sound.css';
-import VolumeButton from '../VolumeButton/VolumeButton';
+import VolumeButton from './VolumeButton/VolumeButton';
 
 const Sound = props => {
     

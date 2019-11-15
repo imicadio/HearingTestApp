@@ -6,13 +6,15 @@ import Home from './containers/Home/Home';
 import Contact from './containers/Contact/Contact';
 import SetupInstruction from './containers/Setup-Instruction/Setup-Instruction';
 import Test from './containers/Test/Test';
+import TestChild from './containers/Test/Test-Child/Test-Child';
 
 const routes = (
   <Switch>
-    <Route path="/setupInstructions" component={SetupInstruction} />
-    <Route path="/test" component={Test} />
-    <Route path="/contact" component={Contact} />
-    <Route path="/" exact component={Home} />
+    <Route exact path="/setupInstructions" component={SetupInstruction} />
+    <Route exact path="/test" component={Test} />
+    <Route exact path="/test/:id" component={TestChild} />
+    <Route exact path="/contact" component={Contact} />
+    <Route exact path="/" component={Home} />
     <Redirect to="/" />
   </Switch>
 );
