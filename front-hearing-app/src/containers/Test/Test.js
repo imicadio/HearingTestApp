@@ -16,7 +16,7 @@ const Test = props => {
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];
     
     // Forms - formularze do aktualizowania, uzupełnienia
-    const [ orderForm, setOrderForm ] = useState(forms);        
+    const [ disabledInfo, setDisabledInfo ] = useState(false);      
     
     // stan głośności pliku muzycznego
     const [ count, setCount ] = useState(11);
@@ -47,13 +47,16 @@ const Test = props => {
         audio.pause(); 
         setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_"+ dB[_count] +".ogg"));
         // console.log(setAudio);
+
     }, [audio]);
 
     const btnClick = () => {        
         setPlay(!_play);
         audio.loop = _play;
         if(_play) audio.play();
-        if(!_play) audio.pause();                         
+        if(!_play) audio.pause();   
+        setDisabledInfo(true);  
+        forms["test"].valid = true;              
     };  
 
     useEffect(() => {
@@ -86,6 +89,7 @@ const Test = props => {
                     <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
                 <Footer 
+                    disabled={disabledInfo}
                     nextMusic={nextMusic}
                     history={history}
                     link={link}
