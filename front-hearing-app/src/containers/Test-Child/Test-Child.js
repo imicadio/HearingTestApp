@@ -1,11 +1,11 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
-import { sounds, forms } from './../../../hooks-store/sounds';
+import { sounds, forms } from '../../hooks-store/sounds';
 
-import Footer from './../../../components/Footer/Footer';
-import Header from '../../../components/Header/Header';
-import Content from '../../../components/Content/Content';
-import Sound from '../../../components/Sound/Sound';
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
+import Content from '../../components/Content/Content';
+import Sound from '../../components/Sound/Sound';
 
 const TestChild = ({ match, location }) => {
     const {
@@ -71,6 +71,15 @@ const TestChild = ({ match, location }) => {
         } 
     }, [audio]);
 
+    useEffect(() => {        
+        setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[count] +".ogg"));
+        setPlay(true);
+    }, [id]);
+
+    const nextMusic = () => {
+        audio.pause();
+    }
+
     console.log(audio);
 
     return(
@@ -88,6 +97,7 @@ const TestChild = ({ match, location }) => {
                     <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
                 <Footer 
+                    nextMusic={nextMusic}
                     history={history}
                     link={link}
                 />

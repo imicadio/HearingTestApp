@@ -63,6 +63,10 @@ const Test = props => {
         } 
     }, [audio]);
 
+    const nextMusic = () => {
+        audio.pause();
+    }
+
     console.log(audio);
 
     return(
@@ -80,6 +84,7 @@ const Test = props => {
                     <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
                 <Footer 
+                    nextMusic={nextMusic}
                     history={history}
                     link={link}
                 />

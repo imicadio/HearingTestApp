@@ -29,7 +29,7 @@ const Footer = props => {
                         <i className={classes.left}></i>                            
                     </span>
                     <span className={classes.button}>
-                        <NavLink to={props.link}>
+                        <NavLink to={props.link} onClick={props.nextMusic}>
                             <button className={classes.button_1}>Dalej</button>
                         </NavLink>                            
                     </span>

@@ -6,7 +6,7 @@ import Home from './containers/Home/Home';
 import Contact from './containers/Contact/Contact';
 import SetupInstruction from './containers/Setup-Instruction/Setup-Instruction';
 import Test from './containers/Test/Test';
-import TestChild from './containers/Test/Test-Child/Test-Child';
+import TestChild from './containers/Test-Child/Test-Child';
 
 const routes = (
   <Switch>
