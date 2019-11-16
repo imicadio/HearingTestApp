@@ -30,8 +30,6 @@ const TestChild = ({ match, location }) => {
 
     const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[count] +".ogg"));
     
-    
-
     const link = `/test/${sounds[id].link}`;     
 
     const volumeAdd = () => {
@@ -77,6 +75,8 @@ const TestChild = ({ match, location }) => {
     }, [id]);
 
     const nextMusic = () => {
+        forms[id].value = dB[count];   
+        console.log(forms);  
         audio.pause();
     }
 

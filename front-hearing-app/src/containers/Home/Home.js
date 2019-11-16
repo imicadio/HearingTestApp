@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '../../hooks-store/store';
+import { sounds, forms } from '../../hooks-store/sounds';
 
 import Footer from './../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
@@ -26,7 +27,7 @@ const Home = () => {
 
     const handleChange = event => {
         const { name, value } = event.target;
-        console.log(value);
+        console.log(value);        
         setForm({
             ...form,
             [name]: value
@@ -40,7 +41,7 @@ const Home = () => {
     }  
 
     const submit = () => {
-        dispatch('ADD_FORM', form);              
+        forms[form.id].value = form.answer;      
     }
     return(
         <React.Fragment>

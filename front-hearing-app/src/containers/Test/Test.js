@@ -64,6 +64,8 @@ const Test = props => {
     }, [audio]);
 
     const nextMusic = () => {
+        forms["test"].value = dB[count];   
+        console.log(forms);  
         audio.pause();
     }
 
