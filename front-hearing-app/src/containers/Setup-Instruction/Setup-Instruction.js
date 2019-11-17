@@ -9,6 +9,7 @@ const SetupInstruction = () => {
     const history = useHistory();
     const headerText = "Przed rozpoczęciem";
     const link = "/test";
+    const disabledInfo = true; 
     
     return(
         <React.Fragment>
@@ -18,6 +19,7 @@ const SetupInstruction = () => {
                     <h2>Upewnij się, że przebywasz w cichym pomieszczeniu.</h2>
                 </Content>
                 <Footer 
+                    isValid={disabledInfo}
                     history={history}
                     link={link}
                 />

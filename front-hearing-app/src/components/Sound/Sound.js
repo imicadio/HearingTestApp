@@ -19,10 +19,6 @@ const Sound = props => {
     return(
         <React.Fragment>
             {button}
-            <VolumeButton
-                volumeAdd={props.volumeAdd}
-                volumeRemove={props.volumeRemove}
-            />
         </React.Fragment>
     );
 }

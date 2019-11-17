@@ -6,16 +6,18 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Content from '../../components/Content/Content';
 import Sound from '../../components/Sound/Sound';
+import VolumeButton from './../../components/Sound/VolumeButton/VolumeButton';
 
 const TestChild = ({ match, location }) => {
     const {
         params: { id }
     } = match;
 
-    const soundHz = sounds[id].id;
-
     const history = useHistory();
-    const headerText = `Dźwięk ${sounds[id].id}`;
+    const headerText = "Za pomocą przycisków + / - ustaw minimalny poziom słyszenia dźwięku";
+
+    // disbledInfo - blokada przycisku "next" w stopce
+    const [ disabledInfo, setDisabledInfo ] = useState(forms[id].valid);  
 
     // Tablica poziomu głośności w dB
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];
@@ -24,7 +26,7 @@ const TestChild = ({ match, location }) => {
     const [ orderForm, setOrderForm ] = useState(forms);        
     
     // stan głośności pliku muzycznego
-    const [ count, setCount ] = useState(11);
+    const [ count, setCount ] = useState(0);
     
     const [ _play, setPlay ] = useState(true);  
 
@@ -59,7 +61,9 @@ const TestChild = ({ match, location }) => {
         setPlay(!_play);
         audio.loop = _play;
         if(_play) audio.play();
-        if(!_play) audio.pause();                         
+        if(!_play) audio.pause();  
+        setDisabledInfo(true);  
+        forms[id].valid = true;                         
     };  
 
     useEffect(() => {
@@ -72,6 +76,8 @@ const TestChild = ({ match, location }) => {
     useEffect(() => {        
         setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[count] +".ogg"));
         setPlay(true);
+        setCount(0);
+        setDisabledInfo(forms[id].valid);
     }, [id]);
 
     const nextMusic = () => {
@@ -94,9 +100,14 @@ const TestChild = ({ match, location }) => {
                         volumeRemove={volumeRemove}
                         aud={audio} 
                     />
+                    <VolumeButton
+                        volumeAdd={volumeAdd}
+                        volumeRemove={volumeRemove}
+                    />
                     <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
                 <Footer 
+                    isValid={disabledInfo}
                     nextMusic={nextMusic}
                     history={history}
                     link={link}
