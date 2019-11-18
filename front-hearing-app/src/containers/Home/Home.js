@@ -83,7 +83,7 @@ const Home = () => {
                     </Answers>
                 </Content>
                 <Footer  
-                    disabled={disabledInfo}
+                    isValid={disabledInfo}
                     ordered={handleSubmit}                
                     link={link}
                 />

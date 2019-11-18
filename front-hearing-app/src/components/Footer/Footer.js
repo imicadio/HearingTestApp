@@ -1,25 +1,28 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import classes from './Footer.css';
 
-const Footer = props => {       
+const Footer = props => {   
+    
+    let validBtn = [classes.button_1]
+    if(!props.isValid) validBtn = [classes.button_2];
 
     let navigation = (
         <div className={classes.footer}>
             <div className={classes.footer_inner}>
                 <span className={classes.button}>
-                    <NavLink to={props.link}>
+                    <Link to={props.link}>
                         <button 
-                            className={classes.button_1}
+                            className={validBtn}
                             onClick={props.ordered} 
                             type="submit"
-                            disabled={!props.disabled}
+                            disabled={!props.isValid}
                         >Sprawdźmy!</button>
-                    </NavLink>                            
+                    </Link>                            
                 </span>
             </div>
         </div>
-    );
+    );    
 
     if(props.link !== "/setupInstructions"){
         navigation = (
@@ -29,12 +32,15 @@ const Footer = props => {
                         <i className={classes.left}></i>                            
                     </span>
                     <span className={classes.button}>
-                        <NavLink  to={props.link} onClick={props.nextMusic}>
+                        <Link  
+                            to={props.link} 
+                            onClick={props.nextMusic}
+                        >
                             <button 
                                 disabled={!props.isValid}
-                                className={classes.button_1}
+                                className={validBtn}
                             >Dalej</button>
-                        </NavLink>                            
+                        </Link>                            
                     </span>
                 </div>
             </div>            
