@@ -90,6 +90,7 @@ const TestChild = ({ match, location }) => {
     
     const backButton = () => {
         if(!_play) audio.pause(); 
+        setCount(sounds[id].count);
     }
 
     console.log(audio);
