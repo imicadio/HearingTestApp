@@ -26,7 +26,7 @@ const TestChild = ({ match, location }) => {
     const [ orderForm, setOrderForm ] = useState(forms);        
     
     // stan głośności pliku muzycznego
-    const [ count, setCount ] = useState(0);
+    const [ count, setCount ] = useState(sounds[id].count);
     
     const [ _play, setPlay ] = useState(true);  
 
@@ -76,19 +76,21 @@ const TestChild = ({ match, location }) => {
     useEffect(() => {        
         setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[count] +".ogg"));
         setPlay(true);
-        setCount(0);
+        audio.pause();
+        setCount(sounds[id].count);
         setDisabledInfo(forms[id].valid);
     }, [id]);
-
+    
     const nextMusic = () => {
         forms[id].value = dB[count];   
         console.log(forms);  
+        setCount(sounds[id].count);
         audio.pause();
     }
-
+    
     const backButton = () => {
-        audio.pause();
-    }  
+        if(!_play) audio.pause(); 
+    }
 
     console.log(audio);
 

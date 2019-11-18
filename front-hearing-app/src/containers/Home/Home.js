@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useStore } from '../../hooks-store/store';
-import { sounds, forms } from '../../hooks-store/sounds';
+import { forms } from '../../hooks-store/sounds';
 
 import Footer from './../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
@@ -11,20 +10,19 @@ import './Home.css'
 
 const img = "http://imicadio.com/HearingTestApp/assets/images/hearing-01.svg";
 
-const Home = () => {
-    // const state = useStore()[0];
-    const dispatch = useStore()[1];    
+const Home = () => {  
     
     const headerText = "5 minutowy test słuchu";
     const link = "/setupInstructions";
-
-    const [ disabledInfo, setDisabledInfo ] = useState(false);
-
+    
+    const [ disabledInfo, setDisabledInfo ] = useState(forms["home"].valid);
+    
     const [ form, setForm ] = useState({
         id: "home",
         answer: ""
     });
-
+    
+    
     const handleChange = event => {
         const { name, value } = event.target;
         console.log(value);        
@@ -42,6 +40,7 @@ const Home = () => {
 
     const submit = () => {
         forms[form.id].value = form.answer;      
+        forms[form.id].valid = true; 
     }
     return(
         <React.Fragment>

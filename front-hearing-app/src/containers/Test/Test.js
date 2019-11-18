@@ -32,8 +32,7 @@ const Test = props => {
         setPlay(!_play);
         audio.loop = _play;
         if(_play) audio.play();
-        if(!_play) audio.pause();   
-        setDisabledInfo(true);                      
+        if(!_play) audio.pause();                              
     };  
 
     useEffect(() => {

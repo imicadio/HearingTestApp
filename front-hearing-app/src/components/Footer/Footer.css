@@ -74,6 +74,7 @@
 }
 
 .button_back {
+  cursor: pointer;
   float: left;
   text-align: center;
   display: flex;

@@ -38,48 +38,48 @@ export const sounds = {
     test: {
         id: "test",
         link: 1,
-        count: 11,
+        count: 0,
         play: true
     },
     1: {
         id: 250,
         link: 2,
-        count: 11,
+        count: 0,
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_80.ogg"        
     },
     2: {
         id: 500,
         link: 3,
-        count: 11,
+        count: 0,
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/500Hz/500_80.ogg"
     },
     3: {
         id: 1000,
         link: 4,
-        count: 11,
+        count: 0,
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/1000Hz/1000_80.ogg"
     },
     4: {
         id: 2000,
         link: 5,
-        count: 11,
+        count: 0,
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/2000Hz/2000_80.ogg"
     },
     5: {
         id: 4000,
         link: 6,
-        count: 11,
+        count: 0,
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/4000Hz/4000_80.ogg"
     },
     6: {
         id: 8000,
         link: '',
-        count: 11,
+        count: 0,
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/8000Hz/8000_80.ogg"
     },
