@@ -7,12 +7,14 @@ import Contact from './containers/Contact/Contact';
 import SetupInstruction from './containers/Setup-Instruction/Setup-Instruction';
 import Test from './containers/Test/Test';
 import TestChild from './containers/Test-Child/Test-Child';
+import Quiz from './containers/Quiz/Quiz';
 
 const routes = (
   <Switch>
     <Route exact path="/setupInstructions" component={SetupInstruction} />
     <Route exact path="/test" component={Test} />
     <Route exact path="/test/:id" component={TestChild} />
+    <Route exact path="/Questions/:id" component={Quiz} />
     <Route exact path="/contact" component={Contact} />
     <Route exact path="/" component={Home} />
     <Redirect to="/" />

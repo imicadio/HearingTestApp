@@ -27,8 +27,8 @@ const Footer = props => {
     if(props.link !== "/setupInstructions"){
         navigation = (
             <div className={classes.footer}>
-                <div onClick={props.backButton} className={classes.footer_inner}>
-                    <span className={classes.button_back} onClick={() => props.history.goBack()}>
+                <div className={classes.footer_inner}>
+                    <span onClick={props.backButton} className={classes.button_back}>
                         <i className={classes.left}></i>                            
                     </span>
                     <span className={classes.button}>

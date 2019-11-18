@@ -30,6 +30,22 @@ export const forms = {
     6: {
         value: '',
         valid: false
+    },
+    Question1: {
+        value: '',
+        valid: false
+    },
+    Question2: {
+        value: '',
+        valid: false
+    },
+    Question3: {
+        value: '',
+        valid: false
+    },
+    Question4: {
+        value: '',
+        valid: false
     }
 };
 
@@ -78,9 +94,25 @@ export const sounds = {
     },
     6: {
         id: 8000,
-        link: '',
+        link: 'Question1',
         count: 0,
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/8000Hz/8000_80.ogg"
     },
+    Question1: {
+        question: "Czy masz problem ze zrozumieniem mowy w hałasie np. na ulicy?",
+        link: 'Question2',
+    },
+    Question2: {
+        question: "Czy masz problem z usłyszeniem dźwięków ptaków?",
+        link: 'Question3',
+    },
+    Question3: {
+        question: "Czy masz problem ze zrozumieniem mowy w hałasie?",
+        link: 'Question4',
+    },
+    Question4: {
+        question: "Czy masz problem ze zrozumieniem mowy podczas szeptu?",
+        link: '',
+    }
 };

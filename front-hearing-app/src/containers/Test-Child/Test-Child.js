@@ -14,7 +14,7 @@ const TestChild = ({ match, location }) => {
     } = match;
 
     const history = useHistory();
-    const headerText = "Za pomocą przycisków + / - ustaw minimalny poziom słyszenia dźwięku";
+    const headerText = "Za pomocą przycisków + / - ustaw minimalny poziom słyszenia przez ciebie dźwięku";
 
     // disbledInfo - blokada przycisku "next" w stopce
     const [ disabledInfo, setDisabledInfo ] = useState(forms[id].valid);  
@@ -32,7 +32,8 @@ const TestChild = ({ match, location }) => {
 
     const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[count] +".ogg"));
     
-    const link = `/test/${sounds[id].link}`;     
+    let link = `/test/${sounds[id].link}`;   
+    if(sounds[id].link === "Question1") link = `/Questions/${sounds[id].link}`;
 
     const volumeAdd = () => {
         let _count = count;
@@ -91,6 +92,8 @@ const TestChild = ({ match, location }) => {
     const backButton = () => {
         if(!_play) audio.pause(); 
         setCount(sounds[id].count);
+        history.goBack()
+        console.log("back");
     }
 
     console.log(audio);
