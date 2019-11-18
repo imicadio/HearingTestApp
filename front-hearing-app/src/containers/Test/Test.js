@@ -14,7 +14,7 @@ const Test = props => {
     const headerText = "Czy słyszysz dźwięk?";
 
     // disbledInfo - blokada przycisku "next" w stopce
-    const [ disabledInfo, setDisabledInfo ] = useState(false);      
+    const [ disabledInfo, setDisabledInfo ] = useState(forms["test"].valid);      
 
     // Tablica poziomu głośności w dB
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];   
@@ -33,8 +33,7 @@ const Test = props => {
         audio.loop = _play;
         if(_play) audio.play();
         if(!_play) audio.pause();   
-        setDisabledInfo(true);  
-        forms["test"].valid = true;              
+        setDisabledInfo(true);                      
     };  
 
     useEffect(() => {
@@ -43,14 +42,43 @@ const Test = props => {
             audio.loop = true;
         } 
     }, [audio]);
+    
+    const [ form, setForm ] = useState({
+        id: "test",
+        answer: ""
+    });
+
+    const handleChange = event => {
+        const { name, value } = event.target;
+        console.log(value);        
+        setForm({
+            ...form,
+            [name]: value
+        });           
+        setDisabledInfo(true);
+        forms["test"].valid = true;  
+    }     
+    
+    const handleSubmit = event => {
+        console.log("Submitted succesfully");               
+        submit();
+    }  
+    
+    const submit = () => {
+        forms[form.id].value = form.answer;      
+    }
 
     const nextMusic = () => {
-        forms["test"].value = dB[count];   
-        console.log(forms);  
+        submit();
+        // console.log(forms);  
         audio.pause();
     }
 
-    console.log(audio);
+    const backButton = () => {
+        audio.pause();
+    }   
+
+    // console.log(audio);
 
     return(
         <React.Fragment>
@@ -82,16 +110,17 @@ const Test = props => {
                                 type="radio" 
                                 id="radio2" 
                                 name="answer" 
-                                value="Nie wiem" 
+                                value="Nie" 
                                 onChange={handleChange}
                             />
-                            <label for="radio2">Nie wiem</label>
+                            <label for="radio2">Nie</label>
                         </li>
                     </Answers>
                 </Content>
                 <Footer 
                     isValid={disabledInfo}
                     nextMusic={nextMusic}
+                    backButton={backButton}
                     history={history}
                     link={link}
                 />

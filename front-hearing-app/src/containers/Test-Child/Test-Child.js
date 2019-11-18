@@ -86,6 +86,10 @@ const TestChild = ({ match, location }) => {
         audio.pause();
     }
 
+    const backButton = () => {
+        audio.pause();
+    }  
+
     console.log(audio);
 
     return(
@@ -109,6 +113,7 @@ const TestChild = ({ match, location }) => {
                 <Footer 
                     isValid={disabledInfo}
                     nextMusic={nextMusic}
+                    backButton={backButton}
                     history={history}
                     link={link}
                 />
