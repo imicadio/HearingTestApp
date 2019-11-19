@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory} from 'react-router-dom';
 import { forms } from '../../hooks-store/sounds';
 
 import Footer from './../../components/Footer/Footer';
@@ -8,7 +9,31 @@ import Answers from '../../components/Answers/Answers';
 
 const Summary = () => {
 
-    const headerText = `Twój słuch jest dobry`;
+    const history = useHistory();
+
+    let score;
+
+    if(forms["test"].value == "Tak") score = "bardzo słaby";
+    else {
+        let arrayScore = [];
+        for(let key in forms) {
+            if(forms[key].count) arrayScore.push(forms[key].count);
+        }
+        
+        let _score = arrayScore.reduce((a, b) => a + b);
+
+        if(_score < 6) {
+            score = "bardzo słaby";
+        }
+        else if(_score < 7.5) {
+            score = "dobry";
+        }
+        else {
+            score = "bardzo dobry";
+        }
+    }
+
+    const headerText = `Twój słuch jest ${score}`;
 
     useEffect(() => {
         if(forms["home"].value == "") history.push('/');

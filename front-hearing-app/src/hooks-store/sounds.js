@@ -1,3 +1,64 @@
+// export const forms = {
+//     home: {
+//         value: 'Nie',
+//         valid: false
+//     },
+//     test: {
+//         value: 'Nie',
+//         valid: false
+//     },
+//     1: {
+//         value: '',
+//         valid: false,
+//         count: 1
+//     },
+//     2: {
+//         value: '',
+//         valid: false,
+//         count: 1
+//     },
+//     3: {
+//         value: '',
+//         valid: false,
+//         count: 0.5
+//     },
+//     4: {
+//         value: '',
+//         valid: false,
+//         count: 0.5
+//     },
+//     5: {
+//         value: '',
+//         valid: false,
+//         count: 0
+//     },
+//     6: {
+//         value: '',
+//         valid: false,
+//         count: 0
+//     },
+//     Question1: {
+//         value: '',
+//         valid: false,
+//         count: 1
+//     },
+//     Question2: {
+//         value: '',
+//         valid: false,
+//         count: 1
+//     },
+//     Question3: {
+//         value: '',
+//         valid: false,
+//         count: 0.5
+//     },
+//     Question4: {
+//         value: '',
+//         valid: false,
+//         count: 1
+//     }
+// };
+
 export const forms = {
     home: {
         value: '',
@@ -10,52 +71,52 @@ export const forms = {
     1: {
         value: '',
         valid: false,
-        count: ''
+        count: null
     },
     2: {
         value: '',
         valid: false,
-        count: ''
+        count: null
     },
     3: {
         value: '',
         valid: false,
-        count: ''
+        count: null
     },
     4: {
         value: '',
         valid: false,
-        count: ''
+        count: null
     },
     5: {
         value: '',
         valid: false,
-        count: ''
+        count: null
     },
     6: {
         value: '',
         valid: false,
-        count: ''
+        count: null
     },
     Question1: {
         value: '',
         valid: false,
-        question: ''
+        count: null
     },
     Question2: {
         value: '',
         valid: false,
-        question: ''
+        count: null
     },
     Question3: {
         value: '',
         valid: false,
-        question: ''
+        count: null
     },
     Question4: {
         value: '',
         valid: false,
-        question: ''
+        count: null
     }
 };
 
