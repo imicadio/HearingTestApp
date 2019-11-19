@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { forms } from '../../hooks-store/sounds';
 
 import Footer from './../../components/Footer/Footer';
@@ -22,6 +22,7 @@ const Home = () => {
         answer: ""
     });
     
+    const [ activity, setActivity ] = useState(forms["home"].value);
     
     const handleChange = event => {
         const { name, value } = event.target;
@@ -31,6 +32,7 @@ const Home = () => {
             [name]: value
         });           
         setDisabledInfo(true);
+        setActivity(value);
     }     
     
     const handleSubmit = event => {
@@ -42,6 +44,11 @@ const Home = () => {
         forms[form.id].value = form.answer;      
         forms[form.id].valid = true; 
     }
+
+    useEffect(() => {
+        setActivity(forms["home"].value);
+    }, []);
+
     return(
         <React.Fragment>
             <form onSubmit={handleSubmit}>
@@ -57,6 +64,7 @@ const Home = () => {
                                 name="answer" 
                                 value="Tak" 
                                 onChange={handleChange}
+                                checked={activity === "Tak"}
                             />
                             <label for="radio1">Tak</label>
                         </li>
@@ -67,6 +75,7 @@ const Home = () => {
                                 name="answer" 
                                 value="Nie wiem" 
                                 onChange={handleChange}
+                                checked={activity === "Nie wiem"}
                             />
                             <label for="radio2">Nie wiem</label>
                         </li>
@@ -77,6 +86,7 @@ const Home = () => {
                                 name="answer" 
                                 value="Nie" 
                                 onChange={handleChange}
+                                checked={activity === "Nie"}
                             />
                             <label for="radio3">Nie</label>
                         </li>

@@ -74,7 +74,7 @@ export const sounds = {
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_80.ogg"        
     },
-    2: {
+    2: { 
         id: 500,
         link: 3,
         count: 0,

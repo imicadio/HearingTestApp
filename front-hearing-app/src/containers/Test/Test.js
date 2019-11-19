@@ -16,12 +16,7 @@ const Test = props => {
     // disbledInfo - blokada przycisku "next" w stopce
     const [ disabledInfo, setDisabledInfo ] = useState(forms["test"].valid);      
 
-    // Tablica poziomu głośności w dB
-    const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];   
-    
-    
-    // stan głośności pliku muzycznego
-    const [ count, setCount ] = useState(11);
+    const [ activity, setActivity ] = useState(forms["test"].value);
     
     const [ _play, setPlay ] = useState(true);  
     const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/calibrated.ogg"));
@@ -56,6 +51,7 @@ const Test = props => {
         });           
         setDisabledInfo(true);
         forms["test"].valid = true;  
+        setActivity(value);
     }     
     
     const handleSubmit = event => {
@@ -74,8 +70,13 @@ const Test = props => {
     }
 
     const backButton = () => {
+        history.goBack();
         audio.pause();
     }   
+
+    useEffect(() => {
+        setActivity(forms["test"].value);
+    }, []);
 
     // console.log(audio);
 
@@ -101,6 +102,7 @@ const Test = props => {
                                 name="answer" 
                                 value="Tak" 
                                 onChange={handleChange}
+                                checked={activity === "Tak"}
                             />
                             <label for="radio1">Tak</label>
                         </li>
@@ -111,6 +113,7 @@ const Test = props => {
                                 name="answer" 
                                 value="Nie" 
                                 onChange={handleChange}
+                                checked={activity === "Nie"}
                             />
                             <label for="radio2">Nie</label>
                         </li>

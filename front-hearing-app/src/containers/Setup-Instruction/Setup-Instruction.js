@@ -10,6 +10,10 @@ const SetupInstruction = () => {
     const headerText = "Przed rozpoczęciem";
     const link = "/test";
     const disabledInfo = true; 
+
+    const backButton = () => {
+        history.goBack();
+    }
     
     return(
         <React.Fragment>
@@ -20,7 +24,7 @@ const SetupInstruction = () => {
                 </Content>
                 <Footer 
                     isValid={disabledInfo}
-                    history={history}
+                    backButton={backButton}
                     link={link}
                 />
             </div>

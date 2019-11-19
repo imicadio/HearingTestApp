@@ -22,13 +22,12 @@ const Quiz = ({ match }) => {
     
     const [ disabledInfo, setDisabledInfo ] = useState(forms[id].valid);
 
-    const [ activity, setActivity ] = useState();
+    const [ activity, setActivity ] = useState(forms[id].value);
     
     const [ form, setForm ] = useState({
         id: id,
         answer: ""
-    });
-    
+    });    
     
     const handleChange = event => {
         const { name, value } = event.target;
@@ -73,7 +72,7 @@ const Quiz = ({ match }) => {
     useEffect(() => {
         setForm({ id: id });
         setDisabledInfo(forms[id].valid);    
-        setActivity(false);
+        setActivity(forms[id].value);
     }, [id]);
 
     return(
