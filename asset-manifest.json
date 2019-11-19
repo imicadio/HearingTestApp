@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/HearingTestApp/static/css/main.fb12af8a.chunk.css",
+    "main.js": "/HearingTestApp/static/js/main.488e290d.chunk.js",
+    "main.js.map": "/HearingTestApp/static/js/main.488e290d.chunk.js.map",
+    "runtime-main.js": "/HearingTestApp/static/js/runtime-main.97da276d.js",
+    "runtime-main.js.map": "/HearingTestApp/static/js/runtime-main.97da276d.js.map",
+    "static/js/2.31461a12.chunk.js": "/HearingTestApp/static/js/2.31461a12.chunk.js",
+    "static/js/2.31461a12.chunk.js.map": "/HearingTestApp/static/js/2.31461a12.chunk.js.map",
+    "index.html": "/HearingTestApp/index.html",
+    "precache-manifest.4dee1b2db3ce329f269f485d2d9450a1.js": "/HearingTestApp/precache-manifest.4dee1b2db3ce329f269f485d2d9450a1.js",
+    "service-worker.js": "/HearingTestApp/service-worker.js",
+    "static/css/main.fb12af8a.chunk.css.map": "/HearingTestApp/static/css/main.fb12af8a.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.97da276d.js",
+    "static/js/2.31461a12.chunk.js",
+    "static/css/main.fb12af8a.chunk.css",
+    "static/js/main.488e290d.chunk.js"
+  ]
+}
