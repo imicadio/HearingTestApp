@@ -74,6 +74,7 @@ const Quiz = ({ match }) => {
         setForm({ id: id });
         setDisabledInfo(forms[id].valid);    
         setActivity(forms[id].value);
+        if(forms["home"].value == "") history.push('/');
     }, [id]);
 
     return(

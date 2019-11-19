@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory} from 'react-router-dom';
+import { forms } from '../../hooks-store/sounds';
 
 import Footer from './../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
@@ -14,6 +15,10 @@ const SetupInstruction = () => {
     const backButton = () => {
         history.goBack();
     }
+
+    useEffect(() =>{
+        if(forms["home"].value == "") history.push('/');
+    }, []);
     
     return(
         <React.Fragment>

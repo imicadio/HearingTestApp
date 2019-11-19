@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { forms } from '../../hooks-store/sounds';
 
 import Footer from './../../components/Footer/Footer';
@@ -9,6 +9,10 @@ import Answers from '../../components/Answers/Answers';
 const Summary = () => {
 
     const headerText = `Twój słuch jest dobry`;
+
+    useEffect(() => {
+        if(forms["home"].value == "") history.push('/');
+    }, []);
 
     return(
         <React.Fragment>

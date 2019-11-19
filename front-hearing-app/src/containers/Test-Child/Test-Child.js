@@ -77,6 +77,7 @@ const TestChild = ({ match, location }) => {
         audio.pause();
         setCount(sounds[id].count);
         setDisabledInfo(forms[id].valid);
+        if(forms["home"].value == "") history.push('/');
     }, [id]);
     
     const nextMusic = () => {

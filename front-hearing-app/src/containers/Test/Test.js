@@ -76,6 +76,7 @@ const Test = props => {
 
     useEffect(() => {
         setActivity(forms["test"].value);
+        if(forms["home"].value == "") history.push('/');
     }, []);
 
     // console.log(audio);
