@@ -13,8 +13,9 @@ const Summary = () => {
 
     let score;
 
-    if(forms["test"].value == "Tak") score = "bardzo słaby";
-    else {
+    if(forms["test"].value == "Nie"){ 
+        score = "bardzo słaby"
+    } else {
         let arrayScore = [];
         for(let key in forms) {
             if(forms[key].count) arrayScore.push(forms[key].count);
