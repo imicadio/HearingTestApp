@@ -20,10 +20,7 @@ const TestChild = ({ match, location }) => {
     const [ disabledInfo, setDisabledInfo ] = useState(forms[id].valid);  
 
     // Tablica poziomu głośności w dB
-    const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];
-    
-    // Forms - formularze do aktualizowania, uzupełnienia
-    const [ orderForm, setOrderForm ] = useState(forms);        
+    const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];     
     
     // stan głośności pliku muzycznego
     const [ count, setCount ] = useState(sounds[id].count);
@@ -83,9 +80,19 @@ const TestChild = ({ match, location }) => {
     }, [id]);
     
     const nextMusic = () => {
-        forms[id].value = dB[count];   
-        console.log(forms);  
+        forms[id].value = dB[count];           
+        
+        if(dB[count]<=30){
+            forms[id].count = 1;
+        }
+        else if (dB[count] > 30 && dB[count] <= 60){
+            forms[id].count = 0.5;
+        }
+        else {
+            forms[id].count = 0;
+        }
         setCount(sounds[id].count);
+        console.log(forms[id]);
         audio.pause();
     }
     
@@ -93,10 +100,10 @@ const TestChild = ({ match, location }) => {
         if(!_play) audio.pause(); 
         setCount(sounds[id].count);
         history.goBack()
-        console.log("back");
+        // console.log("back");
     }
 
-    console.log(audio);
+    // console.log(audio);
 
     return(
         <React.Fragment>

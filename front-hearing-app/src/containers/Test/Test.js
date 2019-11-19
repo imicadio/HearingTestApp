@@ -64,7 +64,7 @@ const Test = props => {
     }  
     
     const submit = () => {
-        forms[form.id].value = form.answer;      
+        forms[form.id].value = form.answer;       
     }
 
     const nextMusic = () => {

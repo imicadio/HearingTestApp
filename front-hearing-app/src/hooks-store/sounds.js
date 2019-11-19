@@ -9,43 +9,53 @@ export const forms = {
     },
     1: {
         value: '',
-        valid: false
+        valid: false,
+        count: ''
     },
     2: {
         value: '',
-        valid: false
+        valid: false,
+        count: ''
     },
     3: {
         value: '',
-        valid: false
+        valid: false,
+        count: ''
     },
     4: {
         value: '',
-        valid: false
+        valid: false,
+        count: ''
     },
     5: {
         value: '',
-        valid: false
+        valid: false,
+        count: ''
     },
     6: {
         value: '',
-        valid: false
+        valid: false,
+        count: ''
     },
     Question1: {
         value: '',
-        valid: false
+        valid: false,
+        question: ''
     },
     Question2: {
         value: '',
-        valid: false
+        valid: false,
+        question: ''
     },
     Question3: {
         value: '',
-        valid: false
+        valid: false,
+        question: ''
     },
     Question4: {
         value: '',
-        valid: false
+        valid: false,
+        question: ''
     }
 };
 
