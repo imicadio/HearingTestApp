@@ -18,7 +18,8 @@ const Quiz = ({ match }) => {
     const history = useHistory();
 
     const headerText = sounds[id].question;
-    const link = `/Questions/${sounds[id].link}`;   
+    let link = `/Questions/${sounds[id].link}`;  
+    if (sounds[id].link == "Summary") link = "/Summary"
     
     const [ disabledInfo, setDisabledInfo ] = useState(forms[id].valid);
 

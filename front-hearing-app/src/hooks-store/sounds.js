@@ -123,6 +123,6 @@ export const sounds = {
     },
     Question4: {
         question: "Czy masz problem ze zrozumieniem mowy podczas szeptu?",
-        link: '',
+        link: 'Summary',
     }
 };
