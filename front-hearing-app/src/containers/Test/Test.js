@@ -84,7 +84,6 @@ const Test = props => {
     }   
 
     useEffect(() => {
-        setAudio("http://imicadio.com/HearingTestApp/assets/audio/calibrated.ogg");
         setActivity(forms["test"].value);
         if(forms["home"].value == "") history.push('/');
     }, []);
