@@ -1,92 +1,53 @@
-.main_btn {
-    text-align: center; 
-    margin-top:30px;
-  }
+.volumeHide {
+  display: none;
+}
 
-.main_hr {
-    width: 30%;
-    border: none;
-    border-top: 1px solid #c3c3c3;
-  }
+.volumeBtn, .volumeBtn_play {
+  background:#fff;
+  border: .125rem solid #004990 ;
+  box-shadow: none;
+  color:#004990;
+  position: relative;
+  opacity: 1;
+  user-select: none;
+  border-radius: 50%;
+  width: 10vmin;
+  height: 10vmin;
+  color: #004990;
+  font-size: 6vmin;
+  outline: 0;
+  cursor: pointer;    
+  vertical-align: middle;
+  transition: all .25s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .icon_btn {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #cdcdcd;
-    background: white;
-    border-radius: 25px;
-    overflow: hidden;
-    position: relative;
-    transition: width 0.2s ease-in-out;
+.volumeBtn:hover, .volumeBtn:focus {
+  background: #004990;
+  color: white;
+}
+
+.volumeBtn:before, .volumeBtn_play{
+  line-height: 10vmin;
+  border: none;
+}
+
+.volumeBtn:active, .volumeBtn_play:active {
+  transform: scale(.9);
+}
+
+.volumeBtn_play {
+  margin: 0 10vmin;
+  font-size: 10rem;
+  width: 20vmin;
+  height: 20vmin;
+}
+
+@media all and (max-width: 540px) { 
+  .volumeBtn {
+    width: 20vmin;
+    height: 20vmin;
   }
-  .add_btn:hover {
-    width: 120px;
-  }
-  .add_btn::before,
-  .add_btn::after {
-    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
-    content: "";
-    position: absolute;
-    height: 4px;
-    width: 10px;
-    top: calc(50% - 2px);
-    background: red;
-  }
-  .add_btn::after {
-    right: 14px;
-    overflow: hidden;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
-  .add_btn::before {
-    left: 14px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-  }
-  .icon_btn:focus {
-    outline: none;
-  }
-  .btn_txt {
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .add_btn:hover::before,
-  .add_btn:hover::after {
-    width: 4px;
-    border-radius: 2px;
-  }
-  .add_btn:hover .btn_txt {
-    opacity: 1;
-  }
-  .add_icon::after,
-  .add_icon::before {
-    transition: all 0.2s ease-in-out;
-    content: "";
-    position: absolute;
-    height: 20px;
-    width: 2px;
-    top: calc(50% - 10px);
-    background: red;
-    overflow: hidden;
-  }
-  .add_icon::before {
-    left: 22px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-  }
-  .add_icon::after {
-    right: 22px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
-  .add_btn:hover .add_icon::before {
-    left: 15px;
-    height: 4px;
-    top: calc(50% - 2px);
-  }
-  .add_btn:hover .add_icon::after {
-    right: 15px;
-    height: 4px;
-    top: calc(50% - 2px);
-  }
-  
+}  

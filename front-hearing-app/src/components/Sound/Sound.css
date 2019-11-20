@@ -6,6 +6,9 @@
   height: 33vh;
 }
 
+  .volumeHide {
+    display: none;
+  }
 
   .volumeBtn, .volumeBtn_play {
     background:#fff;

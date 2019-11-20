@@ -46,6 +46,10 @@ input:checked + label {
     color: #fff;
 }
 
+input[type="radio"] {
+    display: none;
+}
+
   @media all and (max-width: 540px){
     img {
         max-width: 18%;

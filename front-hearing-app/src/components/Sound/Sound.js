@@ -1,8 +1,9 @@
 import React from 'react'
 import classes from './Sound.css';
+import VolumeButton from './VolumeButton/VolumeButton';
 
 const Sound = props => {
-    
+
     let button = (
         <button 
             onClick={props.btnClick} 
@@ -11,6 +12,7 @@ const Sound = props => {
     );
 
     if(!props._play) {  
+        
         button = (
             <button 
                 onClick={props.btnClick} 
@@ -22,15 +24,15 @@ const Sound = props => {
     return(
         <React.Fragment>
             <div className={classes.boxSounds}>
-                <div 
-                    className={classes.volumeBtn} 
-                    onClick={props.volumeRemove}
-                ><i class="fa fa-volume-down"></i></div>                
+                <VolumeButton 
+                    _play={props._play} 
+                    volume={props.volumeRemove} 
+                ><i class="fa fa-volume-down"></i></VolumeButton>
                 {button}                
-                <div 
-                    className={classes.volumeBtn} 
-                    onClick={props.volumeAdd}
-                ><i class="fa fa-volume-up"></i></div>
+                <VolumeButton 
+                    _play={props._play} 
+                    volume={props.volumeAdd} 
+                ><i class="fa fa-volume-up"></i></VolumeButton>
             </div>
         </React.Fragment>
     );

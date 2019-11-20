@@ -40,6 +40,10 @@ const Summary = () => {
         if(forms["home"].value == "") history.push('/');
     }, []);
 
+    const backButton = () => {
+        history.goBack();
+    }
+
     return(
         <React.Fragment>
             <div>
@@ -50,7 +54,9 @@ const Summary = () => {
 
                     </Answers>
                 </Content>
-                <Footer />
+                <Footer
+                    backButton={backButton} 
+                />
             </div>
     </React.Fragment>
     );

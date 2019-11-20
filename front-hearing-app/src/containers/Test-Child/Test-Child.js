@@ -13,7 +13,7 @@ const TestChild = ({ match, location }) => {
     } = match;
 
     const history = useHistory();
-    const headerText = "Za pomocą przycisków + / - ustaw minimalny poziom słyszenia przez ciebie dźwięku";
+    let [ headerText, setHeaderText ] = useState("Naciśnij przycisk aby odtworzyć dźwięk.");
 
     // disbledInfo - blokada przycisku "next" w stopce
     const [ disabledInfo, setDisabledInfo ] = useState(forms[id].valid);  
@@ -57,8 +57,14 @@ const TestChild = ({ match, location }) => {
     const btnClick = () => {        
         setPlay(!_play);
         audio.loop = _play;
-        if(_play) audio.play();
-        if(!_play) audio.pause();  
+        if(_play) {
+            audio.play();
+            setHeaderText("Ustaw minimalny poziom głośności słyszenia dźwięku za pomocą przycisków z głośnikami.");
+        }
+        if(!_play) {
+            audio.pause();  
+            setHeaderText("Naciśnij przycisk aby odtworzyć dźwięk.");
+        }
         setDisabledInfo(true);  
         forms[id].valid = true;                         
     };  
@@ -109,7 +115,7 @@ const TestChild = ({ match, location }) => {
         <React.Fragment>
             <div>
                 <Header text={headerText} />  
-                <Content>                     
+                <Content true={true}>                     
                     <Sound 
                         _play={_play}
                         btnClick={btnClick}
@@ -117,7 +123,6 @@ const TestChild = ({ match, location }) => {
                         volumeRemove={volumeRemove}
                         aud={audio} 
                     />
-                    <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>
                 <Footer 
                     isValid={disabledInfo}

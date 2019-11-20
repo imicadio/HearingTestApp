@@ -10,8 +10,11 @@ import Answers from '../../components/Answers/Answers';
 
 const Test = props => {
 
+
+    console.log(forms);
+
     const history = useHistory();
-    const headerText = "Czy słyszysz dźwięk?";
+    let [ headerText, setHeaderText ] = useState("Naciśnij przycisk aby odtworzyć dźwięk.");
 
     // disbledInfo - blokada przycisku "next" w stopce
     const [ disabledInfo, setDisabledInfo ] = useState(forms["test"].valid);      
@@ -26,8 +29,14 @@ const Test = props => {
     const btnClick = () => {        
         setPlay(!_play);
         audio.loop = _play;
-        if(_play) audio.play();
-        if(!_play) audio.pause();                              
+        if(_play) {
+            audio.play();
+            setHeaderText("Ustaw minimalny poziom głośności słyszenia dźwięku za pomocą przycisków z głośnikami.");
+        }
+        if(!_play) {
+            audio.pause();  
+            setHeaderText("Naciśnij przycisk aby odtworzyć dźwięk.");
+        }                            
     };  
 
     useEffect(() => {
@@ -91,10 +100,6 @@ const Test = props => {
                         btnClick={btnClick}
                         aud={audio} 
                     />
-                    <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
-                    <div>
-                        <h3>Czy słyszysz dźwięk?</h3>
-                    </div>
                     <Answers>
                         <li>
                             <input 
