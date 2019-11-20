@@ -1,6 +1,6 @@
 .Container{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     height: calc(100vh - 5rem);
 }
