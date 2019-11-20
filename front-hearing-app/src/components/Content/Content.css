@@ -4,6 +4,7 @@
     margin: 0;
     display: table !important;
     width: 100%;
+    height: calc(100vh - 13rem);
 }
 
 .content_inner {

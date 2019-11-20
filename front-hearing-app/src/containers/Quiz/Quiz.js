@@ -13,8 +13,6 @@ const Quiz = ({ match }) => {
         params: { id }
     } = match;
 
-    // console.log(id);
-
     const history = useHistory();
 
     const headerText = sounds[id].question;
@@ -23,23 +21,14 @@ const Quiz = ({ match }) => {
     
     const [ disabledInfo, setDisabledInfo ] = useState(forms[id].valid);
 
-    const [ activity, setActivity ] = useState(forms[id].value);
-    
-    const [ form, setForm ] = useState({
-        id: id,
-        answer: ""
-    });    
+    const [ activity, setActivity ] = useState(forms[id].value);     
     
     const handleChange = event => {
-        const { name, value } = event.target;
-        // console.log(value);    
-        // event.preventDefault();    
-        setForm({
-            ...form,
-            [name]: value
-        });           
+        const { value } = event.target;         
         setDisabledInfo(true);
         setActivity(value);
+        forms[id].value = value;      
+        forms[id].valid = true; 
     }     
     
     const handleSubmit = event => {        
@@ -48,21 +37,19 @@ const Quiz = ({ match }) => {
         submit();        
     }  
 
-    const submit = () => {
-        forms[form.id].value = form.answer;      
-        forms[form.id].valid = true; 
-        switch(form.answer){
+    const submit = () => {        
+        switch(forms[id].value){
             case("Tak"):
-                forms[form.id].count = 0;
+                forms[id].count = 0;
                 break;
             case("Nie"):
-                forms[form.id].count = 1;
+                forms[id].count = 1;
                 break;
             default:
-                forms[form.id].count = 0.5;
+                forms[id].count = 0.5;
         }
 
-        console.log(forms[form.id]);
+        console.log(forms[id]);
     }
 
     const backButton = () => {
@@ -71,7 +58,6 @@ const Quiz = ({ match }) => {
     // console.log(forms);
 
     useEffect(() => {
-        setForm({ id: id });
         setDisabledInfo(forms[id].valid);    
         setActivity(forms[id].value);
         if(forms["home"].value == "") history.push('/');

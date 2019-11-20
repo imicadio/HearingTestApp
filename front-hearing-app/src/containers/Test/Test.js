@@ -8,10 +8,7 @@ import Content from '../../components/Content/Content';
 import Sound from '../../components/Sound/Sound';
 import Answers from '../../components/Answers/Answers';
 
-const Test = props => {
-
-
-    console.log(forms);
+const Test = () => {
 
     const history = useHistory();
     let [ headerText, setHeaderText ] = useState("Naciśnij przycisk aby odtworzyć dźwięk.");
@@ -44,37 +41,17 @@ const Test = props => {
             audio.play();  
             audio.loop = true;
         } 
-    }, [audio]);
-    
-    const [ form, setForm ] = useState({
-        id: "test",
-        answer: ""
-    });
+    }, [audio]);    
 
     const handleChange = event => {
-        const { name, value } = event.target;
-        console.log(value);        
-        setForm({
-            ...form,
-            [name]: value
-        });           
+        const { value } = event.target;        
         setDisabledInfo(true);
         forms["test"].valid = true;  
         setActivity(value);
-    }     
-    
-    const handleSubmit = event => {
-        console.log("Submitted succesfully");               
-        submit();
+        forms["test"].value = value;   
     }  
-    
-    const submit = () => {
-        forms[form.id].value = form.answer;       
-    }
 
-    const nextMusic = () => {
-        submit();
-        // console.log(forms);  
+    const nextMusic = () => {        
         audio.pause();
     }
 
@@ -87,8 +64,6 @@ const Test = props => {
         setActivity(forms["test"].value);
         if(forms["home"].value == "") history.push('/');
     }, []);
-
-    // console.log(audio);
 
     return(
         <React.Fragment>

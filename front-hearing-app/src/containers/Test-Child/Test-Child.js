@@ -40,6 +40,7 @@ const TestChild = ({ match, location }) => {
         // console.log("Wartość count: " + dB[count] + ", wartość _count (aktualny dźwięk): " + dB[_count]);  
         audio.pause();   
         setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[_count] +".ogg"));
+        if(!_play) forms[id].value = dB[_count];
     };
 
     const volumeRemove = () => {   
@@ -52,6 +53,7 @@ const TestChild = ({ match, location }) => {
         audio.pause(); 
         setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[_count] +".ogg"));
         // console.log(setAudio);
+        if(!_play) forms[id].value = dB[_count];
     };
 
     const btnClick = () => {        
@@ -66,7 +68,8 @@ const TestChild = ({ match, location }) => {
             setHeaderText("Naciśnij przycisk aby odtworzyć dźwięk.");
         }
         setDisabledInfo(true);  
-        forms[id].valid = true;                         
+        forms[id].valid = true;           
+        if(forms[id].value == "") forms[id].value = dB[count];
     };  
 
     useEffect(() => {
@@ -85,8 +88,7 @@ const TestChild = ({ match, location }) => {
         if(forms["home"].value == "") history.push('/');
     }, [id]);
     
-    const nextMusic = () => {
-        forms[id].value = dB[count];           
+    const nextMusic = () => {       
         
         if(dB[count]<=30){
             forms[id].count = 1;
@@ -97,8 +99,7 @@ const TestChild = ({ match, location }) => {
         else {
             forms[id].count = 0;
         }
-        setCount(sounds[id].count);
-        console.log(forms[id]);
+        setCount(sounds[id].count);        
         audio.pause();
     }
     
@@ -106,10 +107,7 @@ const TestChild = ({ match, location }) => {
         if(!_play) audio.pause(); 
         setCount(sounds[id].count);
         history.goBack()
-        // console.log("back");
     }
-
-    // console.log(audio);
 
     return(
         <React.Fragment>

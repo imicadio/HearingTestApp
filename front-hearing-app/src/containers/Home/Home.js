@@ -16,34 +16,20 @@ const Home = () => {
     const link = "/setupInstructions";
     
     const [ disabledInfo, setDisabledInfo ] = useState(forms["home"].valid);
-    
-    const [ form, setForm ] = useState({
-        id: "home",
-        answer: ""
-    });
-    
+        
     const [ activity, setActivity ] = useState(forms["home"].value);
     
     const handleChange = event => {
-        const { name, value } = event.target;
-        console.log(value);        
-        setForm({
-            ...form,
-            [name]: value
-        });           
+        const { value } = event.target;               
         setDisabledInfo(true);
         setActivity(value);
+        forms["home"].value = value;      
+        forms["home"].valid = true; 
     }     
     
     const handleSubmit = event => {
-        console.log("Submitted succesfully");               
-        submit();
+        console.log("Submitted succesfully"); 
     }  
-
-    const submit = () => {
-        forms[form.id].value = form.answer;      
-        forms[form.id].valid = true; 
-    }
 
     useEffect(() => {
         setActivity(forms["home"].value);
@@ -93,8 +79,7 @@ const Home = () => {
                     </Answers>
                 </Content>
                 <Footer  
-                    isValid={disabledInfo}
-                    ordered={handleSubmit}                
+                    isValid={disabledInfo}               
                     link={link}
                 />
             </form>

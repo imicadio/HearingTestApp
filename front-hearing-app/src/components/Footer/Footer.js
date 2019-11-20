@@ -14,7 +14,6 @@ const Footer = props => {
                     <Link to={props.link}>
                         <button 
                             className={validBtn}
-                            onClick={props.ordered} 
                             type="submit"
                             disabled={!props.isValid}
                         >Sprawdźmy!</button>
