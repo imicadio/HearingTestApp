@@ -6,7 +6,6 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Content from '../../components/Content/Content';
 import Sound from '../../components/Sound/Sound';
-import VolumeButton from './../../components/Sound/VolumeButton/VolumeButton';
 
 const TestChild = ({ match, location }) => {
     const {
@@ -117,10 +116,6 @@ const TestChild = ({ match, location }) => {
                         volumeAdd={volumeAdd}
                         volumeRemove={volumeRemove}
                         aud={audio} 
-                    />
-                    <VolumeButton
-                        volumeAdd={volumeAdd}
-                        volumeRemove={volumeRemove}
                     />
                     <h2>Naciśnij "Play" aby odtworzyć dźwięk</h2>
                 </Content>

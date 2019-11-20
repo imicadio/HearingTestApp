@@ -9,6 +9,9 @@
     /* margin-bottom: 50px; */
     height: 8rem;
     z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header:after {
@@ -28,8 +31,19 @@
 
 h2 {
     vertical-align: center;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 500;
     margin: 1.2em 5%;
     text-align: center;
 }
+
+@media all and (max-width: 540px) { 
+    h2 {
+        font-size: 1.2rem;
+    }
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }

@@ -29,7 +29,7 @@ const Footer = props => {
             <div className={classes.footer}>
                 <div className={classes.footer_inner}>
                     <span onClick={props.backButton} className={classes.button_back}>
-                        <i className={classes.left}></i>                            
+                        <i class="fa fa-arrow-left"></i>                           
                     </span>
                     <span className={classes.button}>
                         <Link  

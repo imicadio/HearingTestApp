@@ -96,6 +96,8 @@
   width: 6rem;  
   border: 3px solid #8bbc07;
   border-radius: 50px;
+  font-size: 1.4rem;
+  color:#5e5e5e;
 }
 
 .button_back:hover {
@@ -104,10 +106,10 @@
 }
 
 i {
-  border: solid black;
+  /* border: solid black; */
   border-width: 0 3px 3px 0;
   display: inline-block;
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 .left {
