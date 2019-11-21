@@ -54,9 +54,9 @@
   }
 
   @media all and (max-width: 540px) { 
-    .boxSounds{
+    /* .boxSounds{
       height: 10vmin;
-    }
+    } */
     .volumeBtn {
       width: 20vmin;
       height: 20vmin;

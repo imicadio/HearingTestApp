@@ -3,7 +3,7 @@
     text-align: center;
     margin: 0;
     width: 100%;
-    height: calc(100vh - 13rem);
+    height: calc(100vh - 10rem);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,3 +21,10 @@
 .content_true {
     vertical-align: middle;
 }
+
+
+@media all and (max-width: 540px){
+    .content_inner {
+        justify-content: center;
+    }
+  }
