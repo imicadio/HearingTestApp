@@ -25,6 +25,6 @@
 
 @media all and (max-width: 540px){
     .content_inner {
-        justify-content: center;
+        justify-content: space-between;
     }
   }
