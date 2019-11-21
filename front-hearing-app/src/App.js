@@ -8,6 +8,7 @@ import Test from './containers/Test/Test';
 import TestChild from './containers/Test-Child/Test-Child';
 import Quiz from './containers/Quiz/Quiz';
 import Summary from './containers/Summary/Summary';
+import Div100vh from 'react-div-100vh'
 
 const routes = (
   <Switch>
@@ -24,10 +25,12 @@ const routes = (
 const App = props => {
   return (
     <React.Fragment>
-      <Navigation />
-      <main className={classes.Container}>
-        {routes}
-      </main>
+      <Div100vh>
+        <Navigation />
+        <main className={classes.Container}>
+          {routes}
+        </main>
+      </Div100vh>
     </React.Fragment>
   );
 }
