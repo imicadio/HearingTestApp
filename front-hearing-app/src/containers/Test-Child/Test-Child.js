@@ -86,6 +86,7 @@ const TestChild = ({ match, location }) => {
         setCount(sounds[id].count);
         setDisabledInfo(forms[id].valid);
         if(forms["home"].value == "") history.push('/');
+        setHeaderText("Naciśnij przycisk aby odtworzyć dźwięk.");
     }, [id]);
     
     const nextMusic = () => {       

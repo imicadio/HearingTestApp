@@ -21,7 +21,7 @@ const Test = () => {
     const [ _play, setPlay ] = useState(true);  
     const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/calibrated.ogg"));
     
-    const link = `/test/${1}` ;      
+    const link = '/test/1' ;       
 
     const btnClick = () => {        
         setPlay(!_play);
@@ -74,6 +74,7 @@ const Test = () => {
                         _play={_play}
                         btnClick={btnClick}
                         aud={audio} 
+                        volumeDisabled={link}
                     />
                     <Answers>
                         <li>
