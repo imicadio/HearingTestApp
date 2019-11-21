@@ -13,3 +13,9 @@
     display: table;
     margin: 0 auto;
 }
+
+@media all and (max-width: 540px) { 
+    .answers {
+        margin: 10vmin auto 0 auto;
+    }
+  }  
