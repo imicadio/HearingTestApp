@@ -2,16 +2,20 @@
     padding: 10rem 0 0 0;
     text-align: center;
     margin: 0;
-    display: table !important;
     width: 100%;
     height: calc(100vh - 13rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .content_inner {
-    display: table-cell;
-    vertical-align: bottom;
     width: 100%;
-    padding-bottom: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .content_true {
