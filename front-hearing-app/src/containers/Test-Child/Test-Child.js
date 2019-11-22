@@ -95,6 +95,7 @@ const TestChild = ({ match, location }) => {
         setDisabledInfo(forms[id].valid);
         if(forms["home"].value == "") history.push('/');
         setHeaderText("Naciśnij przycisk aby odtworzyć dźwięk.");
+        purchaseCancelHandler();
     }, [id]);
     
     const nextMusic = () => {       
@@ -110,6 +111,7 @@ const TestChild = ({ match, location }) => {
         }
         setCount(sounds[id].count);        
         audio.pause();
+        if(purchasing) purchaseCancelHandler();
     }
     
     const backButton = () => {
@@ -120,9 +122,13 @@ const TestChild = ({ match, location }) => {
 
     return(
         <React.Fragment>  
-            <Modal show={purchasing} modalClosed={purchaseCancelHandler}>
-                <h3>Osiągnięto maxymalny poziom głośności. Nie słychać dźwięku?</h3>
-                
+            <Modal 
+                show={purchasing} 
+                modalClosed={purchaseCancelHandler} 
+                link={link} 
+                nextMusic={nextMusic}
+            >
+                <h3>Osiągnięto maxymalny poziom głośności.</h3>                
             </Modal>          
             <Header text={headerText} />  
             <Content true={true}>                     

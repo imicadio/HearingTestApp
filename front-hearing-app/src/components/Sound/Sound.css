@@ -60,4 +60,9 @@
       width: 20vmin;
       height: 20vmin;
     }
+
+    .volumeBtn_play {
+      margin: 0 5vmin;
+      font-size: 7rem;
+    }
   }  

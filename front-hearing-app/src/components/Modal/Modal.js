@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './Modal.css';
 import Aux from '../../hoc/_Aux/_Aux';
@@ -16,6 +17,10 @@ const modal = props => {
                     opacity: props.show ? '1' : '0'
                 }}>
                 {props.children}
+                <div className={classes.modalButtons}>
+                    <button className={[classes.Button, classes.Danger].join(' ')} onClick={props.modalClosed}>Powrót</button>
+                    <Link to={props.link}><button className={[classes.Button, classes.Success].join(' ')} onClick={props.nextMusic}>Nie słychać dźwięku</button></Link>
+                </div>
             </div>
         </Aux>
     )
