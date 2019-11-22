@@ -51,7 +51,8 @@ const Test = () => {
         forms["test"].value = value;   
     }  
 
-    const nextMusic = () => {        
+    const nextMusic = () => {  
+        setAudio("");
         audio.pause();
     }
 
