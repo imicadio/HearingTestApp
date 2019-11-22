@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 import { sounds, forms } from '../../hooks-store/sounds';
 
+import Modal from '../../components/Modal/Modal';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Content from '../../components/Content/Content';
@@ -11,6 +12,8 @@ const TestChild = ({ match, location }) => {
     const {
         params: { id }
     } = match;
+
+    const [ purchasing, setPurchasing ] = useState(false);  
 
     const history = useHistory();
     let [ headerText, setHeaderText ] = useState("Naciśnij przycisk aby odtworzyć dźwięk.");
@@ -27,6 +30,10 @@ const TestChild = ({ match, location }) => {
     const [ _play, setPlay ] = useState(true);  
 
     const [ audio, setAudio ] = useState(new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[count] +".ogg"));
+
+    const purchaseCancelHandler = () => {
+        setPurchasing(false);
+    }
     
     let link = `/test/${sounds[id].link}`;   
     if(sounds[id].link === "Question1") link = `/Questions/${sounds[id].link}`;
@@ -41,6 +48,7 @@ const TestChild = ({ match, location }) => {
         audio.pause();   
         setAudio(audio => new Audio("http://imicadio.com/HearingTestApp/assets/audio/" + sounds[id].id + "Hz/" + sounds[id].id + "_" + dB[_count] +".ogg"));
         if(!_play) forms[id].value = dB[_count];
+        if(_count === 11) setPurchasing(true);
     };
 
     const volumeRemove = () => {   
@@ -111,26 +119,28 @@ const TestChild = ({ match, location }) => {
     }
 
     return(
-        <React.Fragment>
-            <div>
-                <Header text={headerText} />  
-                <Content true={true}>                     
-                    <Sound 
-                        _play={_play}
-                        btnClick={btnClick}
-                        volumeAdd={volumeAdd}
-                        volumeRemove={volumeRemove}
-                        aud={audio} 
-                    />
-                </Content>
-                <Footer 
-                    isValid={disabledInfo}
-                    nextMusic={nextMusic}
-                    backButton={backButton}
-                    history={history}
-                    link={link}
+        <React.Fragment>  
+            <Modal show={purchasing} modalClosed={purchaseCancelHandler}>
+                <h3>Osiągnięto maxymalny poziom głośności. Nie słychać dźwięku?</h3>
+                
+            </Modal>          
+            <Header text={headerText} />  
+            <Content true={true}>                     
+                <Sound 
+                    _play={_play}
+                    btnClick={btnClick}
+                    volumeAdd={volumeAdd}
+                    volumeRemove={volumeRemove}
+                    aud={audio} 
                 />
-            </div>
+            </Content>
+            <Footer 
+                isValid={disabledInfo}
+                nextMusic={nextMusic}
+                backButton={backButton}
+                history={history}
+                link={link}
+            />
         </React.Fragment>
     );
 }
