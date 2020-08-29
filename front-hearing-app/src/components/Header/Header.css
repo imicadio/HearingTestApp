@@ -1,0 +1,32 @@
+.header {
+    height: 7rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-weight: 600;
+    background-color: #ffffff;
+}
+
+.menu {
+    width: 900px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menu>h2 {
+    font-size: 2.5rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    color: #174291;
+    background: -webkit-linear-gradient( #174291, #5c7fbf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo {
+    max-width: 70px;
+    max-height: 100%;
+}

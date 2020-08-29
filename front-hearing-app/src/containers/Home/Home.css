@@ -1,0 +1,17 @@
+.main {
+    height: calc(100vh - 7rem - 5rem);
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.home__h2 {
+    font-size: 46px;
+}
+
+.home__h3 {
+    font-size: 24px;
+}
