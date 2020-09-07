@@ -5,7 +5,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .home__h2 {
@@ -14,4 +13,30 @@
 
 .home__h3 {
     font-size: 24px;
+}
+
+.home__UWM {
+    position: relative;
+    margin-top: 10vh;
+    border: solid 1px #808080;
+    padding: 20px;
+    width: 100%;
+    color: #3e3e3e;
+    border-radius: 5px;
+}
+
+.home__UWM > h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 46px;
+}
+
+.home__UWM > h3 {
+    font-size: 28px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.home__UWM > h4, h5 {
+    text-align: right;
 }
