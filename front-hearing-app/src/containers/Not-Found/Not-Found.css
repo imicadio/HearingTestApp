@@ -1,0 +1,15 @@
+.main {
+    height: calc(100vh - 7rem - 5rem);
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.main > h1 {
+    font-size: 90px;
+}

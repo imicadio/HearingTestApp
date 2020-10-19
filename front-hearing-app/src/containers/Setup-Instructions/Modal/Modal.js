@@ -30,7 +30,7 @@ const ModalSetup = props => {
                 <strong>Windows 10</strong>
             </DialogContentText>
             <DialogContentText id="alert-dialog-description">
-                <p>W systemie Windows 10 ustaw głośność w następujący sposób</p>
+                <p>W systemie Windows 10 ustaw głośność</p>
                 <img src="http://okrabygg.se/wp-content/uploads/2020/09/win10_sound.png" alt="Głośność Windows10" />
             </DialogContentText>
             </DialogContent>

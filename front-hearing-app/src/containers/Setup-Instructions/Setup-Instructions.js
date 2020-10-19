@@ -7,7 +7,7 @@ import { useHistory} from 'react-router-dom';
 const SetupInstructions = () => {
     const history = useHistory();
     const handleClickBack = () => history.goBack();
-    const nextPage = "/"
+    const nextPage = "/measurement/tone=1"
     const textFooter = "Dalej"
 
     //OpenDialog

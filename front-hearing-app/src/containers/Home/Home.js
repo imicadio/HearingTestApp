@@ -4,7 +4,7 @@ import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
 
-    const nextPage = "/Setup-Instructions"
+    const nextPage = "/setup-instructions"
     const textFooter = "Do dzieła!"
     return(
         <React.Fragment>
