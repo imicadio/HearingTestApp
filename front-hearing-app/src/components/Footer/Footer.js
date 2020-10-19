@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 const Footer = props => {
     const history = useHistory();
-    const handleClick = () => history.push(props.nextPage);
+    const handleClick = () => props.locationState ? history.push(props.nextPage, props.locationState) : history.push(props.nextPage);
 
     let btnFooter;
     switch(props.tmpButton) {

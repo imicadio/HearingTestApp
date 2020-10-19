@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import classes from './Sounds.css';
 import Footer from '../../components/Footer/Footer';
+import { tone, forms } from '../../store/tone';
 
 // material ui - import
 import { makeStyles } from "@material-ui/core/styles";
@@ -55,16 +56,15 @@ const Sounds = ({match, location}) => {
     const {
         params: {id}
     } = match;
-
+    
     const customMui = useStyles();
-
     const history = useHistory();
-
-    let [text, setText] = useState("Naciśnij przycisk 'play', aby odtworzyć dźwięk");
+    let [text, setText] = useState("Naciśnij przycisk 'play', aby odtworzyć dźwięk");  
+    let locationState = { state: location.state.state + 1 };    
 
     // Footer 
     const textFooter = "Dalej"
-    const nextPage = "/measurement/" + 1;
+    let nextPage = "/measurement/" + tone[location.state.state].link;
     const handleClickBack = () => history.goBack();
 
     // Table sound level in dB
@@ -88,9 +88,6 @@ const Sounds = ({match, location}) => {
         setText("Naciśnij przycisk 'play', aby odtworzyć dźwięk");
     }
 
-    useEffect(() => {
-        console.log(match)
-    }, [id]);
 
     return(
         <React.Fragment>
@@ -116,6 +113,7 @@ const Sounds = ({match, location}) => {
             <Footer
                 nextPage={nextPage}
                 textFooter={textFooter}
+                locationState={locationState}
                 handleClickBack={handleClickBack} />
         </React.Fragment>
     );

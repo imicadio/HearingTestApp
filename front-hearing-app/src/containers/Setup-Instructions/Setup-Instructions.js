@@ -7,8 +7,9 @@ import { useHistory} from 'react-router-dom';
 const SetupInstructions = () => {
     const history = useHistory();
     const handleClickBack = () => history.goBack();
-    const nextPage = "/measurement/tone=1"
-    const textFooter = "Dalej"
+    const nextPage = "/measurement/tone=1";
+    const textFooter = "Dalej";
+    const locationState = { state: 1 };
 
     //OpenDialog
     const [open, setOpen] = useState(false);
@@ -33,6 +34,7 @@ const SetupInstructions = () => {
             <Footer
                 nextPage={nextPage}
                 textFooter={textFooter}
+                locationState={locationState}
                 handleClickBack={handleClickBack} />
             <ModalSetup
                 openModal={open}
