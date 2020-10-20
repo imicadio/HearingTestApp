@@ -4,7 +4,7 @@
     max-width: 900px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     text-align: center;
     line-height: 1.5;
@@ -30,7 +30,8 @@
 }
 
 .sound__text {
-    margin-top: 10vh;
+    margin-top: 15vh;
+    margin-bottom: 10vh;
 }
 
 @media only screen and (max-width: 540px) { 

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import classes from './Sounds.css';
 import Footer from '../../components/Footer/Footer';
 import { tone, forms } from '../../store/tone';
+import Siriwave from "../../components/Weves/Siri-Wave";
 
 // material ui - import
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,6 +15,29 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+
+const styles = {
+    fontFamily: "sans-serif",
+    textAlign: "center",
+    //background: "#666",
+    height: "auto",
+    width: "100%",
+    position: "absolute",
+    top: "65vh"
+};
+
+const siriwaveStyle = {
+    display: "block",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    left: "0",
+    top: "50%",
+    bottom: "50%",
+    opacity: "0.8",
+    userSelect: "none",
+    cursor: "pointer"
+};
 
 const useStyles = makeStyles((theme) => ({
     play__icon: {    
@@ -56,6 +80,16 @@ const Sounds = ({match, location}) => {
     const {
         params: {id}
     } = match;
+
+    const opt = {
+        width: window.innerWidth,
+        height: window.innerHeight * 0.3,
+        cover: true,
+        speed: 0.03,
+        amplitude: 0.7,
+        frequency: 2,
+        color: "#3794ff"
+    };
     
     const customMui = useStyles();
     const history = useHistory();
@@ -97,7 +131,14 @@ const Sounds = ({match, location}) => {
                 position="static"
                 activeStep={activeStep}                    
             />
+            { !play ? 
+                null :
+                <div style={styles}>
+                    <Siriwave style={siriwaveStyle} opt={opt} />
+                </div>
+            }
             <div className={classes.main}>
+                <h3 className={classes.sound__text}>{text}</h3>
                 <div className={classes.sounds__buttons}>
                     { !play ? 
                         <IconButton onClick={onPlayClick} className={classes.btn__play}><PlayCircleFilledIcon className={customMui.play__icon} /></IconButton> :
@@ -107,8 +148,7 @@ const Sounds = ({match, location}) => {
                             <IconButton><AddCircleIcon className={customMui.add__icon} /></IconButton>
                         </React.Fragment>
                     }
-                </div>
-                <h3 className={classes.sound__text}>{text}</h3>
+                </div>                
             </div>
             <Footer
                 nextPage={nextPage}
