@@ -1,0 +1,16 @@
+.btn__play, .btn__pause {
+    cursor: pointer;
+    background-color: rgba(63, 81, 181, 0.04) !important;
+    margin: 0 9vh 0 9vh !important; 
+}
+
+.btn__play:hover, .btn__pause:hover {
+    background-color: #8bbc07 !important;
+    color: #fff !important;
+}
+
+@media only screen and (max-width: 540px) { 
+    .btn__play, .btn__pause { 
+        margin: 0 3vh 0 3vh !important; 
+    }
+}
