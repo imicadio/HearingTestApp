@@ -55,9 +55,9 @@ const SoundButtons = (props) => {
     if(props.play && (props.link != "/measurement/tone=1")) {
         buttons = (
             <React.Fragment>
-                    <IconButton><RemoveCircleIcon className={customMui.remove__icon} /></IconButton>
+                    <IconButton onClick={props.turnDown}><RemoveCircleIcon className={customMui.remove__icon} /></IconButton>
                     <IconButton onClick={props.onPauseClick} className={classes.btn__pause}><PauseCircleFilledIcon className={customMui.play__icon} /></IconButton>  
-                    <IconButton><AddCircleIcon className={customMui.add__icon} /></IconButton>
+                    <IconButton onClick={props.turnUp}><AddCircleIcon className={customMui.add__icon} /></IconButton>
             </React.Fragment>
         )
     }

@@ -28,6 +28,7 @@ const Sounds = ({match, location}) => {
         params: {id}
     } = match;
 
+    // configuration wave 
     const opt = {
         width: window.innerWidth,
         height: window.innerHeight * 0.3,
@@ -40,7 +41,9 @@ const Sounds = ({match, location}) => {
     
     const history = useHistory();
     let [text, setText] = useState("Naciśnij przycisk 'play', aby odtworzyć dźwięk");  
-    let locationState = { state: location.state.state + 1 };    
+    let locationState = { state: location.state.state + 1 };  
+        
+    const [ count, setCount ] = useState(tone[location.state.state].count);
 
     // Footer 
     const textFooter = "Dalej"
@@ -56,21 +59,63 @@ const Sounds = ({match, location}) => {
     // Stepper level
     const [activeStep, setActiveStep] = useState(0);
 
+    let [ audio, setAudio ] = useState()
+
     // Show pause button 
     const onPlayClick = () => { 
         play ? setPlay(false) : setPlay(true); 
-        setText("Ustaw minimalny poziom słyszenia dźwięku");
+        // console.log(audio)
+        audio.loop = !play;
+        audio.play();
+        history.location.pathname === "/measurement/tone=1" ? 
+            setText("Czy słyszysz dźwięk?") : 
+            setText("Ustaw minimalny poziom słyszenia dźwięku");
     }
 
     // Show play button 
     const onPauseClick = () => { 
         play ? setPlay(false) : setPlay(true); 
+        // console.log("PAUSE = audio.loop: " + play)
+        audio.loop = !play;
+        audio.pause();
         setText("Naciśnij przycisk 'play', aby odtworzyć dźwięk");
+        // console.log(count)
+    }
+    
+    // Podgłoszenie
+    const turnUp = () => {
+        let tmpCount = count;        
+        if(count < dB.length - 1){
+            setCount(count => count += 1); 
+            tmpCount += 1;
+        }
+        audio.pause();
+        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
+    }
+
+    const turnDown = () => {
+        let tmpCount = count;
+        if(count > 0){
+            setCount(count => count -= 1); 
+            tmpCount -= 1;
+        }
+        audio.pause();
+        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
     }
 
     useEffect(() => {
-        console.log(history.location.pathname)
-    }, [])
+        if(play) {
+            audio.loop = play;
+            audio.play();
+        }
+    }, [audio])
+
+    useEffect(() => {
+        // console.log(locationState.state)
+        history.location.pathname === "/measurement/tone=1" ? 
+            setAudio(new Audio("https://okrabygg.se/audio/calibrated.ogg")) : 
+            setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[count] + ".ogg"));
+    }, [locationState.state]);
 
 
     return(
@@ -81,11 +126,11 @@ const Sounds = ({match, location}) => {
                 position="static"
                 activeStep={activeStep}                    
             />
-            { !play ? 
-                null :
+            { play ?                 
                 <div className={classes.div__waves}>
                     <Siriwave style={siriwaveStyle} opt={opt} />
-                </div>
+                </div> : 
+                null
             }
             <div className={classes.main}>
                 <h3 className={classes.sound__text}>{text}</h3>
@@ -94,6 +139,8 @@ const Sounds = ({match, location}) => {
                         play={play}
                         onPauseClick={onPauseClick}
                         onPlayClick={onPlayClick} 
+                        turnUp={turnUp}
+                        turnDown={turnDown}
                         link={history.location.pathname} />
                 </div>                
             </div>
