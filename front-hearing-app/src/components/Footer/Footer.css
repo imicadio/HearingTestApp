@@ -35,6 +35,17 @@
     width: 100%;
 }
 
+.btnFooter__next:disabled {
+    cursor: not-allowed;
+    background-color: #999;
+}
+
+.btnFooter__next:disabled:before {
+    content: '';
+    transition: none;
+    background-color: #999;
+}
+
 .btnFooter:before, .btnFooter__next:before {
   content: '';
   position: absolute;
@@ -65,7 +76,7 @@
 
 .btnBack {    
     height: 48px;
-    background-color: #e6e6e6;
+    background-color: #fff;
     border-radius: 35px 0 0 35px;
     color: #333;
     width: 150px;
@@ -82,7 +93,7 @@
     left: 0;
     width: 0%;
     height: 48px;
-    background-color: #ffffff;
+    background-color: #e6e6e6;
     transition: all .3s;
     border-radius: 35px 0 0 35px;
     z-index: -1;

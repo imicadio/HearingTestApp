@@ -48,19 +48,18 @@ const Sounds = ({match, location}) => {
     // Footer 
     const textFooter = "Dalej"
     let nextPage = "/measurement/" + tone[location.state.state].link;
-    const handleClickBack = () => history.goBack();
-
+    
     // Table sound level in dB
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];  
-
+    
     // Play / Pause button show
     const [play, setPlay] = useState(false);
-
+    
     // Stepper level
     const [activeStep, setActiveStep] = useState(0);
-
+    
     let [ audio, setAudio ] = useState()
-
+    
     // Show pause button 
     const onPlayClick = () => { 
         play ? setPlay(false) : setPlay(true); 
@@ -68,10 +67,10 @@ const Sounds = ({match, location}) => {
         audio.loop = !play;
         audio.play();
         history.location.pathname === "/measurement/tone=1" ? 
-            setText("Czy słyszysz dźwięk?") : 
-            setText("Ustaw minimalny poziom słyszenia dźwięku");
+        setText("Czy słyszysz dźwięk?") : 
+        setText("Za pomocą przycisków - i + wyreguluj głośność tak, żeby usłyszeć najcichszy dźwięk");
     }
-
+    
     // Show play button 
     const onPauseClick = () => { 
         play ? setPlay(false) : setPlay(true); 
@@ -92,7 +91,7 @@ const Sounds = ({match, location}) => {
         audio.pause();
         setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
     }
-
+    
     const turnDown = () => {
         let tmpCount = count;
         if(count > 0){
@@ -103,18 +102,25 @@ const Sounds = ({match, location}) => {
         setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
     }
 
+    const handleClickBack = () => { 
+        history.goBack(); 
+    };
+    
     useEffect(() => {
         if(play) {
             audio.loop = play;
             audio.play();
         }
-    }, [audio])
+        console.log("Audio test: ", audio)
+    }, [audio]);
 
-    useEffect(() => {
-        // console.log(locationState.state)
+    useEffect(() => {   
+        if(play) audio.pause();
+        setPlay(false);
+        setCount(tone[location.state.state].count);      
         history.location.pathname === "/measurement/tone=1" ? 
             setAudio(new Audio("https://okrabygg.se/audio/calibrated.ogg")) : 
-            setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[count] + ".ogg"));
+            setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tone[location.state.state].count] + ".ogg"));
     }, [locationState.state]);
 
 
@@ -145,6 +151,7 @@ const Sounds = ({match, location}) => {
                 </div>                
             </div>
             <Footer
+                disabled={!play}
                 nextPage={nextPage}
                 textFooter={textFooter}
                 locationState={locationState}
