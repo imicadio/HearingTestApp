@@ -49,19 +49,19 @@ export const tone = {
         play: true,
         sound: "http://imicadio.com/HearingTestApp/assets/audio/8000Hz/8000_80.ogg"
     },
-    Question1: {
+    question1: {
         question: "Czy masz problem ze zrozumieniem mowy w hałasie np. na ulicy?",
         link: 'question=2',
     },
-    Question2: {
+    question2: {
         question: "Czy masz problem z usłyszeniem dźwięków ptaków?",
         link: 'question=3',
     },
-    Question3: {
+    question3: {
         question: "Czy masz problem ze zrozumieniem mowy w hałasie?",
         link: 'question=4',
     },
-    Question4: {
+    question4: {
         question: "Czy masz problem ze zrozumieniem mowy podczas szeptu?",
         link: 'Summary',
     }

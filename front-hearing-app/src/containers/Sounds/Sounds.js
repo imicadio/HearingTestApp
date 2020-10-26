@@ -47,7 +47,7 @@ const Sounds = ({match, location}) => {
 
     // Footer 
     const textFooter = "Dalej"
-    let nextPage = "/measurement/" + tone[location.state.state].link;
+    const [ nextPage, setNextPage ] = useState("/measurement/" + tone[location.state.state].link);
     
     // Table sound level in dB
     const dB = [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80];  
@@ -62,23 +62,21 @@ const Sounds = ({match, location}) => {
     
     // Show pause button 
     const onPlayClick = () => { 
+        console.log(nextPage) 
         play ? setPlay(false) : setPlay(true); 
-        // console.log(audio)
         audio.loop = !play;
         audio.play();
         history.location.pathname === "/measurement/tone=1" ? 
-        setText("Czy słyszysz dźwięk?") : 
-        setText("Za pomocą przycisków - i + wyreguluj głośność tak, żeby usłyszeć najcichszy dźwięk");
+            setText("Czy słyszysz dźwięk?") : 
+            setText("Za pomocą przycisków - i + wyreguluj głośność tak, żeby usłyszeć najcichszy dźwięk"); 
     }
     
     // Show play button 
-    const onPauseClick = () => { 
+    const onPauseClick = () => {
         play ? setPlay(false) : setPlay(true); 
-        // console.log("PAUSE = audio.loop: " + play)
         audio.loop = !play;
         audio.pause();
         setText("Naciśnij przycisk 'play', aby odtworzyć dźwięk");
-        // console.log(count)
     }
     
     // Podgłoszenie
@@ -114,8 +112,9 @@ const Sounds = ({match, location}) => {
         console.log("Audio test: ", audio)
     }, [audio]);
 
-    useEffect(() => {   
-        if(play) audio.pause();
+    useEffect(() => {       
+        if(tone[location.state.state].link === "question=1") setNextPage("/questions/" + tone[location.state.state].link)
+        if(play) audio.pause();        
         setPlay(false);
         setCount(tone[location.state.state].count);      
         history.location.pathname === "/measurement/tone=1" ? 
