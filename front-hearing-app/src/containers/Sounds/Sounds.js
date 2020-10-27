@@ -29,11 +29,12 @@ const Sounds = ({match, location}) => {
     } = match;
 
     // configuration wave 
+    const [ speed, setSpeed ] = useState(0.03);
     const opt = {
         width: window.innerWidth,
         height: window.innerHeight * 0.3,
         cover: true,
-        speed: 0.03,
+        speed: speed,
         amplitude: 0.2,
         frequency: 2,
         color: "#3794ff"
@@ -62,7 +63,7 @@ const Sounds = ({match, location}) => {
     
     // Show pause button 
     const onPlayClick = () => { 
-        console.log(nextPage) 
+        console.log(location.state.state) 
         play ? setPlay(false) : setPlay(true); 
         audio.loop = !play;
         audio.play();
@@ -83,6 +84,7 @@ const Sounds = ({match, location}) => {
     const turnUp = () => {
         let tmpCount = count;        
         if(count < dB.length - 1){
+            setSpeed(speed => speed += .01)
             setCount(count => count += 1); 
             tmpCount += 1;
         }
@@ -109,11 +111,12 @@ const Sounds = ({match, location}) => {
             audio.loop = play;
             audio.play();
         }
-        console.log("Audio test: ", audio)
+        // console.log("Audio test: ", audio)
     }, [audio]);
 
     useEffect(() => {       
-        if(tone[location.state.state].link === "question=1") setNextPage("/questions/" + tone[location.state.state].link)
+        setActiveStep(location.state.state)
+        tone[location.state.state].link === "question=1" ? setNextPage("/questions/" + tone[location.state.state].link) : setNextPage("/measurement/" + tone[location.state.state].link)
         if(play) audio.pause();        
         setPlay(false);
         setCount(tone[location.state.state].count);      
@@ -138,7 +141,7 @@ const Sounds = ({match, location}) => {
                 null
             }
             <div className={classes.main}>
-                <h3 className={classes.sound__text}>{text}</h3>
+                <h3 className={classes.sound__text}>{text}</h3>                
                 <div className={classes.sounds__buttons}>
                     <SoundButtons
                         play={play}
@@ -147,7 +150,9 @@ const Sounds = ({match, location}) => {
                         turnUp={turnUp}
                         turnDown={turnDown}
                         link={history.location.pathname} />
-                </div>                
+                </div>  
+                <br />               
+                <h4>{ Number.isInteger(tone[location.state.state].id) ? tone[location.state.state].id + "Hz" : null  }</h4>
             </div>
             <Footer
                 disabled={!play}
