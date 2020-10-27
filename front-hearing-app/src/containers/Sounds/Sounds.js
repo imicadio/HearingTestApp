@@ -7,6 +7,7 @@ import Siriwave from "../../components/Weves/Siri-Wave";
 
 // material ui - import
 import MobileStepper from '@material-ui/core/MobileStepper';
+import HearingIcon from '@material-ui/icons/Hearing';
 
 import SoundButtons from '../../components/Sound/Buttons/Sound-Buttons';
 
@@ -115,10 +116,9 @@ const Sounds = ({match, location}) => {
     }, [audio]);
 
     useEffect(() => {       
-        setActiveStep(location.state.state)
+        setActiveStep(location.state.state - 1)
         tone[location.state.state].link === "question=1" ? setNextPage("/questions/" + tone[location.state.state].link) : setNextPage("/measurement/" + tone[location.state.state].link)
-        if(play) audio.pause();        
-        setPlay(false);
+        if(play) onPauseClick();   
         setCount(tone[location.state.state].count);      
         history.location.pathname === "/measurement/tone=1" ? 
             setAudio(new Audio("https://okrabygg.se/audio/calibrated.ogg")) : 
@@ -152,7 +152,7 @@ const Sounds = ({match, location}) => {
                         link={history.location.pathname} />
                 </div>  
                 <br />               
-                <h4>{ Number.isInteger(tone[location.state.state].id) ? tone[location.state.state].id + "Hz" : null  }</h4>
+                <h4>{ Number.isInteger(tone[location.state.state].id) ? <React.Fragment><HearingIcon fontSize="small" style={{marginRight: 5}} />  { tone[location.state.state].id } Hz  </React.Fragment> : null  }</h4>
             </div>
             <Footer
                 disabled={!play}

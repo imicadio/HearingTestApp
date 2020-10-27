@@ -17,7 +17,7 @@ const Footer = props => {
         default : 
             btnFooter = (
                 <React.Fragment>
-                    <button className={classes.btnBack} onClick={props.handleClickBack}><span className={classes.footer__icon__back}><Icon>keyboard_arrow_left</Icon></span>Cofnij</button>
+                    <button className={classes.btnBack} onClick={props.handleClickBack}><span className={classes.footer__icon__back}><Icon>keyboard_arrow_left</Icon></span><p>Cofnij</p></button>
                     <button 
                         disabled={props.disabled} 
                         className={classes.btnFooter__next} 

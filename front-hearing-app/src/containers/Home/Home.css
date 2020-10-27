@@ -1,6 +1,7 @@
 .main {
     height: calc(100vh - 7rem - 5rem);
-    width: 900px;
+    width: 100%;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,3 +41,67 @@
 .home__UWM > h4, h5 {
     text-align: right;
 }
+
+@media only screen and (max-width: 540px) {
+    .main {
+        text-align: center;
+    } 
+
+    
+    .home__UWM {
+        margin-top: 0;
+        padding: 5px;
+        width: 90%;
+    }
+    
+    .home__h2 {
+        font-size: 18px;
+    }
+
+    .home__h3 {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+    
+    .home__UWM > h2 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .home__UWM > h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 540px)  {
+    .main {
+        text-align: center;
+    } 
+    
+    .home__UWM {
+        margin-top: 40px;
+        padding: 5px;
+        width: 90%;
+    }
+    
+    .home__h2 {
+        font-size: 38px;
+    }
+
+    .home__h3 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .home__UWM > h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .home__UWM > h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+} 

@@ -11,5 +11,58 @@
 }
 
 .main > h2 {
-    font-size: 48px;
+    font-size: 36px;
+    margin-top: -20px;
+    margin-bottom: 40px;
 }
+
+.boxes {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.box {
+    position: relative;
+    width: 25%;
+    margin: 10px;
+}
+
+.box__icon {
+    position: relative;
+}
+
+@media only screen and (max-width: 540px) {
+   .main {
+       font-size: 14px;
+   }
+
+   .main > h2 {
+       font-size: 16px;
+   }
+
+   .boxes {
+        flex-direction: column;
+        width: 75%;
+
+    }
+
+   .box {
+        width: 100%;
+        margin: 0;
+        display: flex;        
+        align-items: center;
+        text-align: left;
+    }
+
+    .box__icon {
+        margin: 15px;
+    }    
+}
+
+
+@media only screen and (max-width: 900px) and (min-width: 540px)  {
+    .main > h2 {
+        font-size: 28px;
+    }
+} 
