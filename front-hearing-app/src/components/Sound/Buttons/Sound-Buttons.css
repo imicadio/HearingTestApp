@@ -9,6 +9,10 @@
     color: #fff !important;
 }
 
+.sound__li {
+    width: calc(100%/2);
+}
+
 @media only screen and (max-width: 540px) { 
     .btn__play, .btn__pause { 
         margin: 0 3vh 0 3vh !important; 

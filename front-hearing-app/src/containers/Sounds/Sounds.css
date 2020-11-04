@@ -27,6 +27,7 @@
 
 .sounds__buttons {
     max-width: 70%;
+    z-index: 10;
 }
 
 .div__waves {
@@ -37,6 +38,7 @@
     width: 100%;
     position: absolute;
     top: 65vh;
+    z-index: 1;
 }
 
 .siri__waves {
@@ -49,15 +51,22 @@
     bottom: 50%;
     opacity: 0.8;
     /* user-select: none; */
-    cursor: pointer
+    cursor: pointer;
+    z-index: 1;
 }
 
 @media only screen and (max-width: 540px) { 
     .sounds__buttons {
         max-width: 95%;
+        z-index: 10;
     }
 
     .btn__play, .btn__pause { 
         margin: 0 3vh 0 3vh !important; 
+    }
+
+    .sound__text {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
     }
 }

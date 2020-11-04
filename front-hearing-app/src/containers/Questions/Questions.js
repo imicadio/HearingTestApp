@@ -14,15 +14,19 @@ const Questions = ({match, location}) => {
     const [ nextPage, setNextPage ] = useState("/questions/" + tone[location.state.state].link);
     const handleClickBack = () => history.goBack();
     let locationState = { state: location.state.state + 1 }; 
+    const [ select, setSelect ] = useState(forms[location.state.state].value);
 
     //const [active, setActive] = useState()
 
-    const handleChange = () => {
-
+    const handleChange = (event) => {
+        const { value } = event.target;
+        setSelect(value);
+        forms[location.state.state].value = value;
     }
 
     useEffect(() => {
-        console.log(location.state)
+        setSelect(forms[location.state.state].value);
+        tone[location.state.state].link === "question=4" ? setNextPage("/summary") : setNextPage("/questions/" + tone[location.state.state].link)
     }, [locationState.state])
     
     return(
@@ -38,7 +42,8 @@ const Questions = ({match, location}) => {
                                 id="radio1"
                                 name="answer"
                                 value="Tak"
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                checked={select === "Tak"} />
                                 <label for="radio1">Tak</label>
                             </li>
                             <li>
@@ -46,7 +51,8 @@ const Questions = ({match, location}) => {
                                 id="radio2"
                                 name="answer"
                                 value="Czasami"
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                checked={select === "Czasami"} />
                                 <label for="radio2">Czasami</label>
                             </li>
                             <li>
@@ -54,7 +60,8 @@ const Questions = ({match, location}) => {
                                 id="radio3"
                                 name="answer"
                                 value="Rzadko"
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                checked={select === "Rzadko"} />
                                 <label for="radio3">Rzadko</label>
                             </li>
                             <li>
@@ -62,7 +69,8 @@ const Questions = ({match, location}) => {
                                 id="radio4"
                                 name="answer"
                                 value="Nie wiem"
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                checked={select === "Nie wiem"} />
                                 <label for="radio4">Niew wiem</label>
                             </li>
                             <li>
@@ -70,7 +78,8 @@ const Questions = ({match, location}) => {
                                 id="radio5"
                                 name="answer"
                                 value="Nie"
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                checked={select === "Nie"} />
                                 <label for="radio5">Nie</label>
                             </li>
                         </ul>

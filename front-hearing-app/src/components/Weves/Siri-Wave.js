@@ -162,6 +162,7 @@ class SiriWaveWrap extends Component {
           this.wavefromEle = wavefrom;
         }}
         className={className}
+        style={{zIndex: 1}}
       />
     );
   }

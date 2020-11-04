@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import classes from './Sound-Buttons.css';
+import { forms } from '../../../store/tone';
 
 import IconButton from '@material-ui/core/IconButton';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
@@ -46,6 +47,13 @@ const useStyles = makeStyles((theme) => ({
 
 const SoundButtons = (props) => { 
     const customMui = useStyles();
+    const [ select, setSelect ] = useState(forms[props.id].value);
+
+    const handleChange = (event) => {
+        const { value } = event.target;
+        setSelect(value);
+        forms[props.id].value = value;
+    }
     
     // Play button
     let buttons = (
@@ -63,7 +71,31 @@ const SoundButtons = (props) => {
     }
     else if(props.play) {
         buttons = (
-            <IconButton onClick={props.onPauseClick} className={classes.btn__pause}><PauseCircleFilledIcon className={customMui.play__icon} /></IconButton>
+            <React.Fragment>
+                <IconButton onClick={props.onPauseClick} className={classes.btn__pause}><PauseCircleFilledIcon className={customMui.play__icon} /></IconButton>
+                <div className={classes.answers} style={{zIndex: 10}}>
+                    <ul style={{paddingLeft: 0, zIndex: 10}}>
+                        <li className={classes.sound__li}>
+                            <input type="radio"
+                            id="radio1"
+                            name="answer"
+                            value="Tak"
+                            onChange={handleChange}
+                            checked={select === "Tak"} />
+                            <label for="radio1">Tak</label>
+                        </li>
+                        <li className={classes.sound__li}>
+                            <input type="radio"
+                            id="radio2"
+                            name="answer"
+                            value="Czasami"
+                            onChange={handleChange}
+                            checked={select === "Nie"} />
+                            <label for="radio2">Nie</label>
+                        </li>
+                    </ul>
+                </div>
+            </React.Fragment>
         );
     }
 

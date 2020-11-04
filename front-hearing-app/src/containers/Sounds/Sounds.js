@@ -64,7 +64,7 @@ const Sounds = ({match, location}) => {
     
     // Show pause button 
     const onPlayClick = () => { 
-        console.log(location.state.state) 
+        // console.log(location.state.state) 
         play ? setPlay(false) : setPlay(true); 
         audio.loop = !play;
         audio.play();
@@ -103,6 +103,20 @@ const Sounds = ({match, location}) => {
         setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
     }
 
+    const handleClickNext = () => {
+        //console.error(location.state.state)
+        if(dB[count]<=30){
+            forms[location.state.state].count = 1;
+        }
+        else if (dB[count] > 30 && dB[count] <= 60){
+            forms[location.state.state].count = 0.5;
+        }
+        else {
+            forms[location.state.state].count = 0;
+        }
+
+    }
+
     const handleClickBack = () => { 
         history.goBack(); 
     };
@@ -116,6 +130,7 @@ const Sounds = ({match, location}) => {
     }, [audio]);
 
     useEffect(() => {       
+        console.log(forms)
         setActiveStep(location.state.state - 1)
         tone[location.state.state].link === "question=1" ? setNextPage("/questions/" + tone[location.state.state].link) : setNextPage("/measurement/" + tone[location.state.state].link)
         if(play) onPauseClick();   
@@ -149,17 +164,20 @@ const Sounds = ({match, location}) => {
                         onPlayClick={onPlayClick} 
                         turnUp={turnUp}
                         turnDown={turnDown}
+                        id={location.state.state}
                         link={history.location.pathname} />
                 </div>  
                 <br />               
-                <h4>{ Number.isInteger(tone[location.state.state].id) ? <React.Fragment><HearingIcon fontSize="small" style={{marginRight: 5}} />  { tone[location.state.state].id } Hz  </React.Fragment> : null  }</h4>
+                { Number.isInteger(tone[location.state.state].id) ? <h4><React.Fragment><HearingIcon fontSize="small" style={{marginRight: 5}} />  { tone[location.state.state].id } Hz  </React.Fragment></h4> : null  }
             </div>
             <Footer
                 disabled={!play}
                 nextPage={nextPage}
                 textFooter={textFooter}
                 locationState={locationState}
-                handleClickBack={handleClickBack} />
+                handleClickBack={handleClickBack}
+                handleClickNext={handleClickNext}
+                soundsFooter={true} />
         </React.Fragment>
     );
 }

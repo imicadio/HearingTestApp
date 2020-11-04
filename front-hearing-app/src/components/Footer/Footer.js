@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 const Footer = props => {
     const history = useHistory();
-    const handleClick = () => props.locationState ? history.push(props.nextPage, props.locationState) : history.push(props.nextPage);
+    const handleClick = () => props.locationState ? history.push(props.nextPage, props.locationState) : history.push(props.nextPage);    
 
     let btnFooter;
     switch(props.tmpButton) {
@@ -18,7 +18,18 @@ const Footer = props => {
             btnFooter = (
                 <React.Fragment>
                     <button className={classes.btnBack} onClick={props.handleClickBack}><span className={classes.footer__icon__back}><Icon>keyboard_arrow_left</Icon></span><p>Cofnij</p></button>
-                    <button 
+                    {
+                        props.soundsFooter ? 
+                        <button 
+                        disabled={props.disabled} 
+                        className={classes.btnFooter__next} 
+                        onClick={props.handleClickNext(), handleClick}>
+                            {props.textFooter}
+                            <span className={classes.footer__icon__next}>
+                                <Icon>keyboard_arrow_right</Icon>
+                            </span>
+                        </button> : 
+                        <button 
                         disabled={props.disabled} 
                         className={classes.btnFooter__next} 
                         onClick={handleClick}>
@@ -26,7 +37,9 @@ const Footer = props => {
                             <span className={classes.footer__icon__next}>
                                 <Icon>keyboard_arrow_right</Icon>
                             </span>
-                    </button>
+                        </button>
+                    }
+                    
                 </React.Fragment>
             );
     }

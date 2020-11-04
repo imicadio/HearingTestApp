@@ -102,22 +102,27 @@ export const forms = {
         valid: false,
         count: null
     },
-    Question1: {
+    7: {
         value: '',
         valid: false,
         count: null
     },
-    Question2: {
+    8: {
         value: '',
         valid: false,
         count: null
     },
-    Question3: {
+    9: {
         value: '',
         valid: false,
         count: null
     },
-    Question4: {
+    10: {
+        value: '',
+        valid: false,
+        count: null
+    },
+    11: {
         value: '',
         valid: false,
         count: null
