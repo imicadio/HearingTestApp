@@ -1,0 +1,15 @@
+.main {
+    height: calc(100vh - 7rem - 5rem);
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.orange__color {
+    background-color: tomato;
+    height: 10px;
+    width: 25%;
+}

@@ -8,7 +8,6 @@ import Siriwave from "../../components/Weves/Siri-Wave";
 // material ui - import
 import MobileStepper from '@material-ui/core/MobileStepper';
 import HearingIcon from '@material-ui/icons/Hearing';
-
 import SoundButtons from '../../components/Sound/Buttons/Sound-Buttons';
 
 const siriwaveStyle = {
@@ -30,16 +29,16 @@ const Sounds = ({match, location}) => {
     } = match;
 
     // configuration wave 
-    const [ speed, setSpeed ] = useState(0.03);
-    const opt = {
+    //const [ speed, setSpeed ] = useState(0.03);
+    const [opt, setOpt] = useState({
         width: window.innerWidth,
         height: window.innerHeight * 0.3,
         cover: true,
-        speed: speed,
+        speed: 0.03,
         amplitude: 0.2,
         frequency: 2,
         color: "#3794ff"
-    };   
+    });   
     
     const history = useHistory();
     let [text, setText] = useState("Naciśnij przycisk 'play', aby odtworzyć dźwięk");  
@@ -85,7 +84,11 @@ const Sounds = ({match, location}) => {
     const turnUp = () => {
         let tmpCount = count;        
         if(count < dB.length - 1){
-            setSpeed(speed => speed += .01)
+            //setSpeed(speed => speed += .01)
+            setOpt({
+                ...opt,
+                [opt.speed]: (opt.speed += 0.01)
+            })
             setCount(count => count += 1); 
             tmpCount += 1;
         }

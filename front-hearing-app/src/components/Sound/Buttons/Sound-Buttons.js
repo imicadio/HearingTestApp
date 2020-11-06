@@ -88,7 +88,7 @@ const SoundButtons = (props) => {
                             <input type="radio"
                             id="radio2"
                             name="answer"
-                            value="Czasami"
+                            value="Nie"
                             onChange={handleChange}
                             checked={select === "Nie"} />
                             <label for="radio2">Nie</label>
