@@ -8,8 +8,7 @@
     align-items: center;
 }
 
-.orange__color {
-    background-color: tomato;
-    height: 10px;
-    width: 25%;
+.graph {
+    width: 500px;
+    height: 500px;
 }
