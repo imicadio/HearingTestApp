@@ -17,11 +17,16 @@
     height: 100%;
 }
 
+.question > h3 {
+    text-align: center;
+}
+
 .question > img {
     max-width: 100%;
 }
 
 .answers {
+    display: block;
     width: 100%;
 }
 
@@ -76,3 +81,28 @@ input:checked + label {
 input[type="radio"] {
     display: none;
 }
+
+.questions__select {
+    width: 100%;
+    padding: 0 20px;
+    display: none;
+}
+
+.formControl > label {
+    border: 0;
+}
+
+@media only screen and (max-width: 540px) {
+    .answers {
+        display: none;
+    }
+    
+    .questions__select {
+        display: block;
+    }
+
+    .formControl {        
+        width: 100% !important;
+    } 
+}
+

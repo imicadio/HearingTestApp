@@ -1,0 +1,35 @@
+.dialog__sound {
+    margin: 20px 0 !important;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog__sound__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
+}
+
+.dialog__sound__buttons > button {
+    margin: 15px 15px !important;
+}
+
+.dialog__sound__icon {    
+    width: 100% !important;
+    margin: 20px 0 0 0 !important;
+    text-align: center;
+}
+
+@media only screen and (max-width: 540px) { 
+    .dialog__sound__buttons {
+        flex-direction: column-reverse;
+    }
+
+    .dialog__sound__buttons > button {
+        width: 100%;
+        margin: 15px 0 !important;
+    }
+}

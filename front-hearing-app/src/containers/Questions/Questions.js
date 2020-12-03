@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import classes from './Questions.css';
 import Footer from '../../components/Footer/Footer';
-import { tone, forms } from '../../store/tone';
+import { tone, forms, reloadPage } from '../../store/tone';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const Questions = ({match, location}) => {
     const {
@@ -10,11 +16,16 @@ const Questions = ({match, location}) => {
     } = match;
 
     const history = useHistory();
-    const textFooter = "Do dzieła!"
+    const textFooter = "Dalej"
     const [ nextPage, setNextPage ] = useState("/questions/" + tone[location.state.state].link);
     const handleClickBack = () => history.goBack();
     let locationState = { state: location.state.state + 1 }; 
     const [ select, setSelect ] = useState(forms[location.state.state].value);
+
+    useEffect(() => {
+        if(reloadPage[1] === '')
+            history.push('/')
+    }, [])
 
     //const [active, setActive] = useState()
 
@@ -26,7 +37,7 @@ const Questions = ({match, location}) => {
 
     useEffect(() => {
         setSelect(forms[location.state.state].value);
-        tone[location.state.state].link === "question=4" ? setNextPage("/summary") : setNextPage("/questions/" + tone[location.state.state].link)
+        tone[location.state.state - 1].link === "question=4" ? setNextPage("/summary") : setNextPage("/questions/" + tone[location.state.state].link)
     }, [locationState.state])
     
     return(
@@ -83,6 +94,24 @@ const Questions = ({match, location}) => {
                                 <label for="radio5">Nie</label>
                             </li>
                         </ul>
+                    </div>
+                    <div className={classes.questions__select}>
+                        <FormControl variant="outlined" fullWidth={true} className={classes.formControl}>
+                            <InputLabel>Wybierz</InputLabel>
+                            <Select
+                            labelId="demo-simple-select-outlined-label"
+                            id="demo-simple-select-outlined"
+                            value={select}
+                            onChange={handleChange}
+                            label="Wybierz"
+                            >
+                                <MenuItem value={'Tak'}>Tak</MenuItem>
+                                <MenuItem value={'Czasami'}>Czasami</MenuItem>
+                                <MenuItem value={'Rzadko'}>Rzadko</MenuItem>
+                                <MenuItem value={'Nie wiem'}>Nie wiem</MenuItem>
+                                <MenuItem value={'Nie'}>Nie</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                 </div>
             </div>     

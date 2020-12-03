@@ -128,3 +128,5 @@ export const forms = {
         count: null
     }
 };
+
+export const reloadPage = { 1: ''};

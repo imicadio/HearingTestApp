@@ -53,6 +53,7 @@ const SoundButtons = (props) => {
         const { value } = event.target;
         setSelect(value);
         forms[props.id].value = value;
+        props.setSelect();
     }
     
     // Play button
@@ -60,7 +61,7 @@ const SoundButtons = (props) => {
         <IconButton onClick={props.onPlayClick} className={classes.btn__play}><PlayCircleFilledIcon className={customMui.play__icon} /></IconButton>
     );
 
-    if(props.play && (props.link != "/measurement/tone=1")) {
+    if(props.play && (props.link !== "/measurement/tone=1")) {
         buttons = (
             <React.Fragment>
                     <IconButton onClick={props.turnDown}><RemoveCircleIcon className={customMui.remove__icon} /></IconButton>

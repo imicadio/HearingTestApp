@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import classes from './Setup-Instructions.css';
 import Footer from '../../components/Footer/Footer';
 import ModalSetup from './Modal/Modal';
@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import HeadsetIcon from '@material-ui/icons/Headset';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
+import { reloadPage } from '../../store/tone';
 
 const useStyles = makeStyles((theme) => ({
     setup__icon: {    
@@ -35,14 +36,19 @@ const SetupInstructions = () => {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
-        console.log('Open modal')
+        // console.log('Open modal')
         setOpen(true);
     }
 
     const handleClose = () => {
-        console.log('Close modal')
+        // console.log('Close modal')
         setOpen(false);
     }
+
+    useEffect(() => {
+        if(reloadPage[1] === '')
+            history.push('/')
+    }, [])
 
     return (
         <React.Fragment>
@@ -51,16 +57,16 @@ const SetupInstructions = () => {
                 <br/>
                 <div className={classes.boxes}>
                     <div className={classes.box}>
-                        <VolumeOffIcon className={classes.box__icon} className={customMui.setup__icon} />
+                        <VolumeOffIcon className={[classes.box__icon, customMui.setup__icon]} />
                         <p>Upewnij się, że przebywasz w cichym pomieszczeniu</p>
                     </div>
                     <div className={classes.box}>
-                        <HeadsetIcon className={classes.box__icon} className={customMui.setup__icon} />
+                        <HeadsetIcon className={[classes.box__icon, customMui.setup__icon]} />
                         <p>Jeśli możesz załóż słuchawki</p>
                     </div>
                     <div className={classes.box}>
-                        <EqualizerIcon className={classes.box__icon} className={customMui.setup__icon} />
-                        <p>Ustaw głośność na 50% <br /> Nie wiesz jak ustawić głośność na 50%? <a href="javascript:;" onClick={handleOpen}>Kliknij tutaj</a></p>
+                        <EqualizerIcon className={[classes.box__icon, customMui.setup__icon]} />
+                        <p>Ustaw głośność na 50% <br /> Nie wiesz jak ustawić głośność na 50%? <a href="#" onClick={handleOpen}>Kliknij tutaj</a></p>
                     </div>
                 </div>
             </div>     

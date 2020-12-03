@@ -2,13 +2,14 @@ import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import classes from './Sounds.css';
 import Footer from '../../components/Footer/Footer';
-import { tone, forms } from '../../store/tone';
+import { tone, forms, reloadPage } from '../../store/tone';
 import Siriwave from "../../components/Weves/Siri-Wave";
 
 // material ui - import
 import MobileStepper from '@material-ui/core/MobileStepper';
 import HearingIcon from '@material-ui/icons/Hearing';
 import SoundButtons from '../../components/Sound/Buttons/Sound-Buttons';
+import ModalSound from './Modal/Modal-Sound';
 
 const siriwaveStyle = {
     display: "block",
@@ -39,6 +40,11 @@ const Sounds = ({match, location}) => {
         frequency: 2,
         color: "#3794ff"
     });   
+
+    useEffect(() => {
+        if(reloadPage[1] === '')
+            history.push('/')
+    }, [])
     
     const history = useHistory();
     let [text, setText] = useState("Naciśnij przycisk 'play', aby odtworzyć dźwięk");  
@@ -59,7 +65,9 @@ const Sounds = ({match, location}) => {
     // Stepper level
     const [activeStep, setActiveStep] = useState(0);
     
-    let [ audio, setAudio ] = useState()
+    const [ audio, setAudio ] = useState()
+    const [ open, setOpen ] = useState(false)
+    const [ selecting, setSelecting ] = useState(true);
     
     // Show pause button 
     const onPlayClick = () => { 
@@ -84,16 +92,13 @@ const Sounds = ({match, location}) => {
     const turnUp = () => {
         let tmpCount = count;        
         if(count < dB.length - 1){
-            //setSpeed(speed => speed += .01)
-            setOpt({
-                ...opt,
-                [opt.speed]: (opt.speed += 0.01)
-            })
             setCount(count => count += 1); 
             tmpCount += 1;
-        }
+        }        
+        if (count === dB.length - 1)
+            setOpen(true)
         audio.pause();
-        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
+        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));            
     }
     
     const turnDown = () => {
@@ -101,13 +106,14 @@ const Sounds = ({match, location}) => {
         if(count > 0){
             setCount(count => count -= 1); 
             tmpCount -= 1;
-        }
+        }        
         audio.pause();
         setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
     }
 
     const handleClickNext = () => {
-        //console.error(location.state.state)
+        //console.error(location.state.state)        
+        forms[location.state.state].value = dB[count];
         if(dB[count]<=30){
             forms[location.state.state].count = 1;
         }
@@ -117,12 +123,31 @@ const Sounds = ({match, location}) => {
         else {
             forms[location.state.state].count = 0;
         }
+    }
 
+    const repeatTest = () => {
+        if(open) 
+            setOpen(false)
+        if(play) onPauseClick(); 
+        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tone[location.state.state].count] + ".ogg"));
+        setCount(0)
+    }
+
+    const closeModal = () => {
+        if(open) 
+            setOpen(false)
+        handleClickNext();
+        history.push(nextPage, locationState);
     }
 
     const handleClickBack = () => { 
         history.goBack(); 
     };
+
+    const setSelect = () => {
+        if(selecting)
+            setSelecting(!selecting)
+    }
     
     useEffect(() => {
         if(play) {
@@ -133,7 +158,7 @@ const Sounds = ({match, location}) => {
     }, [audio]);
 
     useEffect(() => {       
-        console.log(forms)
+        // console.log(forms)
         setActiveStep(location.state.state - 1)
         tone[location.state.state].link === "question=1" ? setNextPage("/questions/" + tone[location.state.state].link) : setNextPage("/measurement/" + tone[location.state.state].link)
         if(play) onPauseClick();   
@@ -146,6 +171,10 @@ const Sounds = ({match, location}) => {
 
     return(
         <React.Fragment>
+            <ModalSound
+                openModal={open}
+                repeatTest={repeatTest}
+                closeModal={closeModal} />
             <MobileStepper
                 variant="dots"
                 steps={7}
@@ -167,6 +196,7 @@ const Sounds = ({match, location}) => {
                         onPlayClick={onPlayClick} 
                         turnUp={turnUp}
                         turnDown={turnDown}
+                        setSelect={setSelect}
                         id={location.state.state}
                         link={history.location.pathname} />
                 </div>  
@@ -180,7 +210,9 @@ const Sounds = ({match, location}) => {
                 locationState={locationState}
                 handleClickBack={handleClickBack}
                 handleClickNext={handleClickNext}
-                soundsFooter={true} />
+                soundsFooter={true}
+                selecting={selecting}
+                tmpButton={history.location.pathname} />
         </React.Fragment>
     );
 }
