@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 const Header = () => {
     const history = useHistory();
     
-    const handleClick = () => {
+    const handleClick = () => {        
         history.push('/')
     }    
 

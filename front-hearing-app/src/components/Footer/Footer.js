@@ -35,6 +35,22 @@ const Footer = props => {
                 </React.Fragment>
             );
             break;
+            case 'questions':
+            btnFooter = (
+                <React.Fragment>
+                    <button className={classes.btnBack} onClick={props.handleClickBack}><span className={classes.footer__icon__back}><Icon>keyboard_arrow_left</Icon></span><p>Cofnij</p></button>
+                    <button 
+                    disabled={props.selecting} 
+                    className={classes.btnFooter__next} 
+                    onClick={handleClick}>
+                        {props.textFooter}
+                        <span className={classes.footer__icon__next}>
+                            <Icon>keyboard_arrow_right</Icon>
+                        </span>
+                    </button>
+                </React.Fragment>
+            );
+            break;
         default : 
             btnFooter = (
                 <React.Fragment>

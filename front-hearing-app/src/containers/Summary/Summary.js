@@ -81,7 +81,12 @@ const Summary = () => {
             3: points.filter(x => x > 50).length,
         }
         
-        if(summary[1] === 0) {
+        if(forms[1].value === 'Nie') {
+            setText1('Bardzo słaby');
+            setText2('Wynik testu wykazuje, że powinieneś umówić się na badanie słuchu u specjalisty')
+            return
+        }
+        else if(summary[1] === 0) {
             setText1('Bardzo słaby');
             setText2('Wynik testu wykazuje, że powinieneś umówić się na badanie słuchu u specjalisty')
             return
@@ -121,14 +126,18 @@ const Summary = () => {
                     <p>Pamiętaj, że ten test <span>nie zastąpi profesjonalnego testu badania słuchu.</span></p>
                     <p>{text2}</p>
                 </div>
-                <div className={classes.graph}>
-                    <h4>Audiogram</h4>
-                    <p>Wykres zależności częstotliwości od decybeli</p>
-                    <Line 
-                        // height={250}
-                        data={chartData}
-                        options={options} />
-                </div>
+                {
+                    forms[1].value === 'Nie' ?
+                    null : 
+                    <div className={classes.graph}>
+                        <h4>Audiogram</h4>
+                        <p>Wykres zależności częstotliwości od decybeli</p>
+                        <Line 
+                            // height={250}
+                            data={chartData}
+                            options={options} />
+                    </div>
+                }                
                 <div className={classes.info2}>
                     <h2>Ubytek słuchu</h2>
                     <ul>

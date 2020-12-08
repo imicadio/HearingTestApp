@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Home.css';
 import Footer from '../../components/Footer/Footer';
+import { reloadPage } from '../../store/tone';
+import { useHistory} from 'react-router-dom';
 
 const Home = () => {
+    const history = useHistory();
 
     const nextPage = "/setup-instructions"
     const textFooter = "Do dzieła!"
+
+    useEffect(() => {
+        if(reloadPage[1] === 'No')
+            window.location.reload()
+    }, [])
+
     return(
         <React.Fragment>
             <div className={classes.main}>

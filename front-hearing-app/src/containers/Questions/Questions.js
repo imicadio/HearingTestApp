@@ -21,6 +21,7 @@ const Questions = ({match, location}) => {
     const handleClickBack = () => history.goBack();
     let locationState = { state: location.state.state + 1 }; 
     const [ select, setSelect ] = useState(forms[location.state.state].value);
+    const [ btnDisable, setBtnDisable ] = useState(!forms[location.state.state].valid);
 
     useEffect(() => {
         if(reloadPage[1] === '')
@@ -32,11 +33,16 @@ const Questions = ({match, location}) => {
     const handleChange = (event) => {
         const { value } = event.target;
         setSelect(value);
+        if(!forms[location.state.state].valid) {
+            forms[location.state.state].valid = !forms[location.state.state].valid;
+            setBtnDisable(!forms[location.state.state].valid)
+        }
         forms[location.state.state].value = value;
     }
 
     useEffect(() => {
         setSelect(forms[location.state.state].value);
+        setBtnDisable(!forms[location.state.state].valid)
         tone[location.state.state - 1].link === "question=4" ? setNextPage("/summary") : setNextPage("/questions/" + tone[location.state.state].link)
     }, [locationState.state])
     
@@ -119,7 +125,9 @@ const Questions = ({match, location}) => {
                 nextPage={nextPage}
                 textFooter={textFooter}
                 locationState={locationState}
-                handleClickBack={handleClickBack} /> 
+                handleClickBack={handleClickBack}
+                selecting={btnDisable}
+                tmpButton={'questions'} /> 
         </React.Fragment>
     );
 }

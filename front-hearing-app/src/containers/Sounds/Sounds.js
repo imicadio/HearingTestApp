@@ -112,17 +112,19 @@ const Sounds = ({match, location}) => {
     }
 
     const handleClickNext = () => {
-        //console.error(location.state.state)        
-        forms[location.state.state].value = dB[count];
-        if(dB[count]<=30){
-            forms[location.state.state].count = 1;
-        }
-        else if (dB[count] > 30 && dB[count] <= 60){
-            forms[location.state.state].count = 0.5;
-        }
-        else {
-            forms[location.state.state].count = 0;
-        }
+        //console.error(location.state.state) 
+        if(history.location.pathname !== "/measurement/tone=1") {
+            forms[location.state.state].value = dB[count];
+            if(dB[count]<=30){
+                forms[location.state.state].count = 1;
+            }
+            else if (dB[count] > 30 && dB[count] <= 60){
+                forms[location.state.state].count = 0.5;
+            }
+            else {
+                forms[location.state.state].count = 0;
+            }
+        }       
     }
 
     const repeatTest = () => {
@@ -158,7 +160,7 @@ const Sounds = ({match, location}) => {
     }, [audio]);
 
     useEffect(() => {       
-        // console.log(forms)
+        console.log(forms)
         setActiveStep(location.state.state - 1)
         tone[location.state.state].link === "question=1" ? setNextPage("/questions/" + tone[location.state.state].link) : setNextPage("/measurement/" + tone[location.state.state].link)
         if(play) onPauseClick();   

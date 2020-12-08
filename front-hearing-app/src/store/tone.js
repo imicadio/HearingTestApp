@@ -51,22 +51,22 @@ export const tone = {
     },
     8: {
         question: "Czy masz problem ze zrozumieniem mowy w hałasie np. na ulicy?",
-        image: "https://okrabygg.se/wp-content/uploads/2020/11/image_1.png",
+        image: "https://okrabygg.se/wp-content/uploads/2020/12/ulica.jpg",
         link: 'question=2',
     },
     9: {
         question: "Czy masz problem z usłyszeniem wysokich dźwięków na przykład ptaków?",
-        image: "https://ocdn.eu/pulscms-transforms/1/ML1k9kqTURBXy9kN2JjZWJiZGZjZDU3ZmIzODgwNzdmYTA2ZDhjN2YzNi5qcGVnlJUDA80B4c0XMM0NC5MFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMjMzN2M5ZmQ2YjkzMWVlNmNiMGQyM2RjYmEyNThhOWQucG5nAMIAkwmmZTRhOWM5BoGhMAE/park-muzakowski.jpg",
+        image: "https://okrabygg.se/wp-content/uploads/2020/12/ptaki.jpg",
         link: 'question=3',
     },
     10: {
-        question: "Czy masz problem ze zrozumieniem mowy w hałasie na przykład zatłoczone restauracje, na ulicy?",
-        image: "https://upserve.com/media/sites/2/bigstock-Four-female-friends-at-lunch-i-158157557-1100x600.jpg",
+        question: "Czy masz problem ze zrozumieniem mowy zatłoczonych miejscach np. restauracje?",
+        image: "https://okrabygg.se/wp-content/uploads/2020/12/restauracja.jpg",
         link: 'question=4',
     },
     11: {
         question: "Czy masz problem ze zrozumieniem mowy podczas szeptu?",
-        image: "https://www.slaskibiznes.pl/images/galbig3/news/2362/telefon_5e04f0b488aa70_37370412.jpg.jpg",
+        image: "https://okrabygg.se/wp-content/uploads/2020/12/szept.jpg",
         link: 'summary',
     }
 };
