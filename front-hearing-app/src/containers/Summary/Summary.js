@@ -192,7 +192,7 @@ const Summary = () => {
                     <p><b>Dźwięki wykrozystane w teście pokazują przybliżony obraz badania słuchu.</b></p>
                 </div>
                 <div className={classes.life}>
-                    <h2>#lifeison</h2>
+                    <h2>Michał Jeszko</h2>
                 </div>
             </div>     
             <Footer

@@ -98,7 +98,7 @@ const Sounds = ({match, location}) => {
         if (count === dB.length - 1)
             setOpen(true)
         audio.pause();
-        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));            
+        setAudio(new Audio("https://hearingtest.online/AUDIO/hearingTest.online.warble_" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));                   
     }
     
     const turnDown = () => {
@@ -108,7 +108,7 @@ const Sounds = ({match, location}) => {
             tmpCount -= 1;
         }        
         audio.pause();
-        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));
+        setAudio(new Audio("https://hearingtest.online/AUDIO/hearingTest.online.warble_" + tone[location.state.state].id + "_" + dB[tmpCount] + ".ogg"));        
     }
 
     const handleClickNext = () => {
@@ -131,7 +131,7 @@ const Sounds = ({match, location}) => {
         if(open) 
             setOpen(false)
         if(play) onPauseClick(); 
-        setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tone[location.state.state].count] + ".ogg"));
+        setAudio(new Audio("https://hearingtest.online/AUDIO/hearingTest.online.warble_" + tone[location.state.state].id + "_" + dB[tone[location.state.state].count] + ".ogg"));        
         setCount(0)
     }
 
@@ -166,8 +166,8 @@ const Sounds = ({match, location}) => {
         if(play) onPauseClick();   
         setCount(tone[location.state.state].count);      
         history.location.pathname === "/measurement/tone=1" ? 
-            setAudio(new Audio("https://okrabygg.se/audio/calibrated.ogg")) : 
-            setAudio(new Audio("https://okrabygg.se/audio/" + tone[location.state.state].id + "Hz/" + tone[location.state.state].id + "_" + dB[tone[location.state.state].count] + ".ogg"));
+            setAudio(new Audio("https://hearingtest.online/AUDIO/hearingTest.online.calibrated.ogg")) : 
+            setAudio(new Audio("https://hearingtest.online/AUDIO/hearingTest.online.warble_" + tone[location.state.state].id + "_" + dB[tone[location.state.state].count] + ".ogg"));            
     }, [locationState.state]);
 
 
