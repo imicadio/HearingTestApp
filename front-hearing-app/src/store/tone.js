@@ -1,3 +1,8 @@
+import img1 from '../assets/images/ptaki.jpg';
+import img2 from '../assets/images/restauracja.jpg';
+import img3 from '../assets/images/szept.jpg';
+import img4 from '../assets/images/ulica.jpg';
+
 export const tone = {
     // 1 - dźwiek kwalifikujący słuch
     1: {
@@ -12,61 +17,55 @@ export const tone = {
         link: "sound=500hz",
         count: 0,
         play: true,
-        sound: "http://imicadio.com/HearingTestApp/assets/audio/250Hz/250_80.ogg"        
     },
     3: { 
         id: 500,
         link: "sound=1000hz",
         count: 0,
         play: true,
-        sound: "http://imicadio.com/HearingTestApp/assets/audio/500Hz/500_80.ogg"
     },
     4: {
         id: 1000,
         link: "sound=2000hz",
         count: 0,
         play: true,
-        sound: "http://imicadio.com/HearingTestApp/assets/audio/1000Hz/1000_80.ogg"
     },
     5: {
         id: 2000,
         link: "sound=4000hz",
         count: 0,
         play: true,
-        sound: "http://imicadio.com/HearingTestApp/assets/audio/2000Hz/2000_80.ogg"
     },
     6: {
         id: 4000,
         link: "sound=8000hz",
         count: 0,
         play: true,
-        sound: "http://imicadio.com/HearingTestApp/assets/audio/4000Hz/4000_80.ogg"
     },
     7: {
         id: 8000,
         link: 'question=1',
         count: 0,
         play: true,
-        sound: "http://imicadio.com/HearingTestApp/assets/audio/8000Hz/8000_80.ogg"
     },
     8: {
         question: "Czy masz problem ze zrozumieniem mowy w hałasie np. na ulicy?",
-        image: "https://okrabygg.se/wp-content/uploads/2020/12/ulica.jpg",
+        image: img4,
         link: 'question=2',
     },
     9: {
         question: "Czy masz problem z usłyszeniem wysokich dźwięków na przykład ptaków?",
-        image: "https://okrabygg.se/wp-content/uploads/2020/12/ptaki.jpg",
+        image: img1,
         link: 'question=3',
     },
     10: {
         question: "Czy masz problem ze zrozumieniem mowy zatłoczonych miejscach np. restauracje?",
-        image: "https://okrabygg.se/wp-content/uploads/2020/12/restauracja.jpg",
+        image: img2,
         link: 'question=4',
     },
     11: {
         question: "Czy masz problem ze zrozumieniem mowy podczas szeptu?",
-        image: "https://okrabygg.se/wp-content/uploads/2020/12/szept.jpg",
+        image: img2,
         link: 'summary',
     }
 };
